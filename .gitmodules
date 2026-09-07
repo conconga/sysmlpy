@@ -1,3 +1,6 @@
 [submodule "submodules/grammar"]
 	path = submodules/grammar
 	url = https://github.com/daltskin/sysml-v2-grammar.git
+[submodule "submodules/SysML-v2-Release"]
+	path = submodules/SysML-v2-Release
+	url = https://github.com/Systems-Modeling/SysML-v2-Release.git
