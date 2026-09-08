@@ -935,7 +935,12 @@ def build_parser() -> argparse.ArgumentParser:
         description="Render one of the sysmlpy views for a SysML file and "
                     "print it (or write it with -o). Graph views (gv, pv, "
                     "afv, iv, stv, sv, cv, browser) emit PlantUML; "
-                    "tabular/datavalue/matrix support --format.",
+                    "tabular/datavalue/matrix support --format."
+                    "  [gv:general view, pv:package view, afv:actionflowview, "
+                    "iv:interconnectionview, stv:statetransitionview, "
+                    "sv:sequence view, cv:case view, tabular:gridview (tabular), "
+                    "datavalue:data value tabular, matrix:relationship matrix, "
+                    "browser:browser (tree) view]",
     )
     p_view.add_argument("file", help="SysML v2 file to render")
     p_view.add_argument(
