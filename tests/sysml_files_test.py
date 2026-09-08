@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from sysmlpy import loads
+from sysmlpy import loads, analyze
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -36,7 +36,8 @@ def test_all_sysml_files_parse():
             # Some grammar classes print non-fatal diagnostics while loading.
             # Keep pytest output focused on actual parse failures.
             with contextlib.redirect_stdout(io.StringIO()):
-                loads(text)
+                i = loads(text)
+                analyze(i)
         except Exception as exc:  # noqa: BLE001 - report every parser issue
             relative_path = path.relative_to(PROJECT_ROOT)
             message = str(exc).strip() or "no error message"
@@ -47,3 +48,4 @@ def test_all_sysml_files_parse():
             f"{len(failures)} of {len(files)} SysML files failed to parse:\n"
             + "\n".join(f"- {failure}" for failure in failures)
         )
+
