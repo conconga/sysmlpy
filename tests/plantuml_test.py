@@ -1369,6 +1369,22 @@ class TestInterconnectionView:
         assert "P3 -[thickness=3]- P4 : waterLine" in puml
         assert "P1 -[thickness=3]- P2 : waterLine" not in puml
 
+    def test_iv_binding_edges_render(self):
+        """Binding connectors render between the referenced features."""
+        from sysmlpy.plantuml import as_interconnection_view
+
+        model = sysmlpy.loads("""
+        package P {
+            part paBlackbox {
+                port p;
+                part A { port p; }
+                bind p = A.p;
+            }
+        }
+        """)
+        puml = as_interconnection_view(model)
+        assert "E2 -[thickness=5]- E4" in puml
+
     def test_iv_inherited_ports_on_usages(self):
         """Usages expose their typed definition's ports on the host boundary."""
         from sysmlpy.plantuml import as_interconnection_view
