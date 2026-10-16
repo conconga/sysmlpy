@@ -849,6 +849,15 @@ from sysmlpy.boxes_view import (
 print(render_interconnection_view_boxes(model))
 ```
 
+Action-flow boxes render **v2-native glyphs** (v0.97.1, matching the
+Intro deck's Action Flow example): action usages/definitions as
+45-degree chamfered **octagons** with their stereotype line, and the
+v2 **solid start diamond** for succession starts —
+`succession s1 first start then b;` (a named succession statement
+whose first or then end names `start`/`done`/`terminate`) binds the
+control primitive like the `first start;` body-item form. Duplicate
+flow/succession edges from wrapper re-collection are deduped.
+
 ```
     ⡰⠊⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠲⡀     ⡰⠊⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠲⡀
     ⡇  «part»    ⡇     ⡇  «part»    ⡇

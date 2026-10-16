@@ -1,6 +1,21 @@
 # CHANGELOG
 
-## Unreleased (on main)
+## 0.97.1 (2026-10-16)
+
+- **Boxes action-flow view: v2-native glyphs** (with diagramboxes
+  0.15.x-0.17.x): action usages/definitions render as chamfered
+  octagons and succession starts as the solid v2 start diamond;
+  named succession statements (`succession s1 first start then b;`)
+  bind their keyword ends (start/done/terminate) to the control
+  primitives, parented to the anchor action's owner box. Duplicate
+  flow/succession edges from wrapper re-collection are deduped
+  (`_edge_once`). Example: `examples/v2_action_flow_poc.py`
+  (validated 10/10 against the Intro deck's providePower figure).
+- Fixes the stale `__version__` string (shipped 0.96.4 inside the
+  0.97.0 wheel).
+
+## 0.97.0 (2026-09-30)
+
 
 - **CI integrations: GitHub Actions, GitLab CI, pre-commit (new
   `sysmlpy ci` subcommand).** One engine (`src/sysmlpy/ci_check.py`)
@@ -36,7 +51,6 @@
   bundled library: `CausationConnections.sysml` and
   `ShapeItems.sysml` now parse (previously crashed at load).
 
-## Unreleased (on main)
 
 - **`qn_registry()` (P3 Vee-join side table).** Every
   `to_interchange(stable_ids=True)` document now carries
@@ -122,7 +136,6 @@
   OMG XPect conformance 123 passed/3 skipped (optional-dep skips),
   KerML batteries 5/5.
 
-## Unreleased (on main)
 
 - (empty — Phase 2b released in v0.96.4, registry reconciliation in
   v0.96.3)

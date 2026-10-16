@@ -1,10 +1,20 @@
 # sysmlpy — Project Status
 
-Current version: **v0.96.4** (2026-09-30)
+Current version: **v0.97.1** (2026-10-16)
 
 ---
 
 ## In Flight (on main, unreleased)
+
+(Nothing staged.)
+
+## Recent Highlights (0.97.1)
+
+- **Boxes action-flow view: v2-native glyphs** — chamfered octagons +
+  the solid start diamond; named succession statements bind their
+  keyword control ends; flow/succession edge dedupe.
+
+## Recent Highlights (v0.97.0)
 
 - **CI integrations** (GitHub Actions / GitLab / pre-commit, new
   `sysmlpy ci` subcommand): parse gate blocking, semantics advisory
