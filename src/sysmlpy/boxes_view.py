@@ -1790,7 +1790,40 @@ def as_action_flow_view_boxes(
                 return container, param[-1]
         return None, None
 
+    # the same grammar body is reachable through more than one semantic
+    # element (a package contains the def whose body holds the flow) —
+    # keep the FIRST collection of each grammar object; the later,
+    # tighter scan otherwise duplicates every flow/succession edge
+    _seen_fg = set()
+    flows2 = []
+    for fgo, fname, fco in flows:
+        if id(fgo) in _seen_fg:
+            continue
+        _seen_fg.add(id(fgo))
+        flows2.append((fgo, fname, fco))
+    flows = flows2
+    _seen_sg = set()
+    succ2 = []
+    for so, sname, sco in successions:
+        if id(so) in _seen_sg:
+            continue
+        _seen_sg.add(id(so))
+        succ2.append((so, sname, sco))
+    successions = succ2
+
     resolved = []   # (from_elem, from_port, to_elem, to_port, label[, dashed])
+    succession_ref_edges = []   # chain-ref pairs w/ a keyword control end
+    _drawn_edges = set()
+
+    def _edge_once(src, dst, label, **kw):
+        # semantic wrappers re-create grammar objects, so the same
+        # statement can be collected twice under different ids — dedupe
+        # on the drawn pair's content
+        key = (id(src), id(dst), label)
+        if key in _drawn_edges:
+            return
+        _drawn_edges.add(key)
+        d.add_edge(src, dst, label=label, **kw)
     for fgo, fname, container in flows:
         ends = _afv_flow_grammar_ends(fgo)
         if not ends or ends[0] is None or ends[1] is None:
@@ -1820,6 +1853,36 @@ def as_action_flow_view_boxes(
         ends = _afv_succession_ends(so)
         if len(ends) < 2:
             continue
+        # v2: an end naming the start/done/terminate keyword binds a
+        # control node (the deck's providePower: 'succession s1 first
+        # start then trigger1' — solid start diamond).  Such ends emit
+        # through the chain-ref path (section 6), with the keyword
+        # resolved to the same primitive the control-chain pass uses.
+        KW = {"start": ("initial",), "initial": ("initial",),
+              "done": ("final",), "terminate": ("final",)}
+        kw_refs = []
+        plain_ends = []
+        kw_present = False
+        for seg in ends[:2]:
+            leaf = (seg[-1] if seg else None)
+            if leaf in KW:
+                kw_refs.append(KW[leaf])
+                kw_present = True
+            else:
+                plain_ends.append(seg)
+        label = None if _afv_uuid_like(sname) else sname
+        if kw_present:
+            if len(kw_refs) == 1 and len(plain_ends) == 1:
+                (fe, _fport) = _resolve_end(plain_ends[0], None, container)
+                if fe is None:
+                    continue
+                if container is not None and fe is container:
+                    continue
+                succession_ref_edges.append(
+                    (kw_refs[0], ("action", fe), None))
+            elif len(kw_refs) == 2:
+                succession_ref_edges.append((kw_refs[0], kw_refs[1], None))
+            continue
         ends_resolved = []
         for owner in ends[:2]:
             ends_resolved.append(_resolve_end(owner, None, container))
@@ -1828,7 +1891,6 @@ def as_action_flow_view_boxes(
             continue
         if container is not None and (fe is container or te is container):
             continue
-        label = None if _afv_uuid_like(sname) else sname
         resolved.append((fe, fport, te, tport, label, True))
 
     # ---- 3b. which definitions need a box ------------------------------
@@ -1879,7 +1941,7 @@ def as_action_flow_view_boxes(
         name = getattr(el, "name", None) or "action"
         nodes[id(el)] = d.add_node(
             name, stereotypes=_stereo(el, is_def),
-            attributes=[], rounded=True, parent=parent_node)
+            attributes=[], chamfer=8, rounded=True, parent=parent_node)
         for pname, direction in _params(el, is_def):
             side = "left" if direction == "in" else "right"
             nodes[id(el)].add_port(pname, side=side, label_inside=True)
@@ -1947,21 +2009,21 @@ def as_action_flow_view_boxes(
                 _draw(el, bool(getattr(el, "is_definition", False)))
         src = nodes.get(id(fe))
         dst = nodes.get(id(te))
-        if src is None or dst is None:
+        if src is None or dst is None or src is dst:
             continue
         sp = _port(src, fport, True)
         tp = _port(dst, tport, False)
-        kw = {"label": label}
+        kw = {}
         if dashed:
             kw["line_style"] = DASHED
         if sp is not None and tp is not None:
-            d.add_edge(src, dst, source_port=sp, target_port=tp, **kw)
+            _edge_once(src, dst, label, source_port=sp, target_port=tp, **kw)
         else:
-            d.add_edge(src, dst, **kw)
+            _edge_once(src, dst, label, **kw)
 
     # ---- 6. control nodes (initial/final/decide/merge/fork/join) ---------
     # Chains are extracted from action grammar bodies by the shared
-    # plantuml extractor.  Boxes map: `first start` -> filled start dot,
+    # plantuml extractor.  Boxes map: start -> solid v2 start diamond,
     # done/terminate targets -> done bullseye, decide/merge -> diamonds,
     # fork/join -> synchronization bars.  Chain edges render as dashed
     # successions with guard conditions as labels.
@@ -1970,52 +2032,80 @@ def as_action_flow_view_boxes(
         chains = _extract_control_chains(model)
     except Exception:
         chains = []
+
+    def _ctrl_box(ref, owner_node=None):
+        # Chain-scoped node identity: one initial/final per chain,
+        # control nodes keyed by their grammar object.
+        if ref == ('initial',):
+            key = ('initial', 'owner%s' % id(owner_node))
+            if key not in ctrl_boxes:
+                # the v2 start node is a solid diamond (the deck's
+                # providePower/p58 start notation, validated 10/10)
+                ctrl_boxes[key] = d.action_start(parent=owner_node)
+            return ctrl_boxes[key]
+        if ref == ('final',):
+            key = ('final', 'owner%s' % id(owner_node))
+            if key not in ctrl_boxes:
+                ctrl_boxes[key] = d.add_done('', parent=owner_node)
+            return ctrl_boxes[key]
+        kind = ref[0]
+        if kind == 'control':
+            key = ('control', id(ref[1]))
+            if key not in ctrl_boxes:
+                kw = getattr(ref[1], 'keyword', None)
+                nm = getattr(ref[1], 'declared_name', None) or ''
+                if kw == 'decide':
+                    ctrl_boxes[key] = d.add_decision(nm, parent=owner_node)
+                elif kw == 'merge':
+                    ctrl_boxes[key] = d.add_merge(nm, parent=owner_node)
+                elif kw == 'fork':
+                    ctrl_boxes[key] = d.add_fork(name=nm, parent=owner_node)
+                else:  # join
+                    ctrl_boxes[key] = d.add_join(name=nm, parent=owner_node)
+            return ctrl_boxes[key]
+        if kind == 'action':
+            return nodes.get(id(ref[1]))
+        return None
+
     for owner, c_nodes, c_edges, _seen in chains:
         owner_node = nodes.get(id(owner))
         if owner_node is None:
             continue  # owning action not drawn (pruned / unrendered)
 
-        def _ctrl_box(ref):
-            # Chain-scoped node identity: one initial/final per chain,
-            # control nodes keyed by their grammar object.
-            if ref == ('initial',):
-                key = ('initial',)
-                if key not in ctrl_boxes:
-                    ctrl_boxes[key] = d.add_start('', parent=owner_node)
-                return ctrl_boxes[key]
-            if ref == ('final',):
-                key = ('final',)
-                if key not in ctrl_boxes:
-                    ctrl_boxes[key] = d.add_done('', parent=owner_node)
-                return ctrl_boxes[key]
-            kind = ref[0]
-            if kind == 'control':
-                key = ('control', id(ref[1]))
-                if key not in ctrl_boxes:
-                    kw = getattr(ref[1], 'keyword', None)
-                    nm = getattr(ref[1], 'declared_name', None) or ''
-                    if kw == 'decide':
-                        ctrl_boxes[key] = d.add_decision(nm, parent=owner_node)
-                    elif kw == 'merge':
-                        ctrl_boxes[key] = d.add_merge(nm, parent=owner_node)
-                    elif kw == 'fork':
-                        ctrl_boxes[key] = d.add_fork(name=nm, parent=owner_node)
-                    else:  # join
-                        ctrl_boxes[key] = d.add_join(name=nm, parent=owner_node)
-                return ctrl_boxes[key]
-            if kind == 'action':
-                return nodes.get(id(ref[1]))
-            return None
-
         for src_ref, dst_ref, label in c_edges:
-            src = _ctrl_box(src_ref)
-            dst = _ctrl_box(dst_ref)
+            src = _ctrl_box(src_ref, owner_node)
+            dst = _ctrl_box(dst_ref, owner_node)
             if src is None or dst is None or src is dst:
                 continue
             if keep_ids is not None and id(owner) not in keep_ids:
                 continue
-            d.add_edge(src, dst, line_style=DASHED, label=label,
-                       target_style=OPEN)
+            _edge_once(src, dst, label, line_style=DASHED, target_style=OPEN)
+
+    # successions naming a control keyword end (start/done/terminate)
+    # bind the same primitives through their refs — STANDALONE: the
+    # chains extract legitimately returns [] for models with only
+    # named succession statements, and the ref-pairs still bind.  The
+    # control primitive parents to the anchor action's owner box.
+    def _ref_owner(ref):
+        if ref and ref[0] == 'action':
+            par = getattr(ref[1], 'parent', None)
+            if par is not None and id(par) in nodes:
+                return nodes[id(par)]
+        return None
+
+    for src_ref, dst_ref, label in succession_ref_edges:
+        if keep_ids is not None:
+            anchor = (dst_ref[1] if dst_ref[0] == 'action' else None)
+            if anchor is None:
+                anchor = (src_ref[1] if src_ref[0] == 'action' else None)
+            if anchor is None or id(anchor) not in keep_ids:
+                continue
+        owner_par = _ref_owner(src_ref) or _ref_owner(dst_ref)
+        src = _ctrl_box(src_ref, owner_par)
+        dst = _ctrl_box(dst_ref, owner_par)
+        if src is None or dst is None or src is dst:
+            continue
+        _edge_once(src, dst, label, line_style=DASHED, target_style=OPEN)
 
     return d
 

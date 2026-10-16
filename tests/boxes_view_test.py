@@ -750,12 +750,15 @@ class TestActionFlowControlBoxes:
     """
 
     def test_start_decision_done_nodes_present(self):
-        from diagramboxes import StartNode, DecisionNode, DoneNode
+        from diagramboxes import DecisionNode, DoneNode
         d = as_action_flow_view_boxes(self.AFV_CONTROL)
         kinds = [type(a).__name__ for a in d.activities]
-        assert "StartNode" in kinds
         assert "DecisionNode" in kinds
         assert "DoneNode" in kinds
+        # the v2 start node is a SOLID diamond (v0.15.x action_start),
+        # not the v1 filled-circle StartNode
+        assert not any(type(a).__name__ == "StartNode" for a in d.activities)
+        assert any(getattr(a, "filled", False) for a in d.activities)
 
     def test_control_nodes_parented_in_composite(self):
         d = as_action_flow_view_boxes(self.AFV_CONTROL)
@@ -862,3 +865,35 @@ class TestInterconnectionNestedEndpoint:
         e = next(e for e in d.edges if e.label == "signal")
         assert e.source.name == "engine" and e.target.name == "telematics"
         assert e.target.parent is None
+
+
+class TestActionFlowV2Shapes:
+    """v0.15.x diagramboxes carries the v2-native glyphs (validated on
+    the Intro deck's providePower example, 10/10): action usages render
+    as OCTAGONS (chamfer=), and the succession start node is a small
+    SOLID diamond (d.action_start) — the deck's own start notation."""
+
+    def test_action_usages_are_octagons(self):
+        d = as_action_flow_view_boxes(AFV_SUCCESSION)
+        acts = [n for n in d.nodes if getattr(n, "chamfer", 0) > 0]
+        assert acts, "action usages must render as chamfered octagons"
+        assert all(getattr(n, "chamfer", 0) == 8 for n in acts
+                   if getattr(n, "chamfer", 0)), "default chamfer is 8"
+
+    def test_start_node_is_solid_diamond(self):
+        from tests.boxes_view_test import TestActionFlowControlBoxes
+        d = as_action_flow_view_boxes(TestActionFlowControlBoxes.AFV_CONTROL)
+        starts = [a for a in d.activities
+                  if getattr(a, "filled", False)]
+        assert starts, "the v2 start node is a solid diamond (filled)"
+        assert all(isinstance(a, __import__("diagramboxes").DecisionNode)
+                   for a in starts)
+        assert not any(type(a).__name__ == "StartNode"
+                       for a in d.activities), (
+            "the v1 filled-circle start is not v2 notation")
+
+    def test_octagon_round_trips(self):
+        d = as_action_flow_view_boxes(AFV_SUCCESSION)
+        payload = __import__("diagramboxes").to_di(d)
+        d2 = __import__("diagramboxes").from_di(payload)
+        assert any(getattr(n, "chamfer", 0) > 0 for n in d2.nodes)
