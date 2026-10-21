@@ -1,13 +1,13 @@
-# The Vee Link: SysML ↔ STEP (stepper + pyoslc)
+# The Vee Link: SysML ↔ STEP (step242 + pyoslc)
 
-sysmlpy + [stepper](https://github.com/mycr0ft/stepper) +
+sysmlpy + [step242](https://github.com/mycr0ft/step242) +
 [pyoslc](https://github.com/mycr0ft/pyoslc) form a Systems-Engineering
 Vee toolchain: this page documents the SysML side of the joins.
 
 ```
      requirements & design              geometry & PMI
      (left/middle of Vee)               (right of Vee)
-     .sysml  —  sysmlpy  —  OSLC  —  stepper  —  .stp
+     .sysml  —  sysmlpy  —  OSLC  —  step242  —  .stp
               parse/analyze   ^  parse/structure
                               │
                     pyoslc serves BOTH sides
@@ -67,7 +67,7 @@ matchers strip `'` before comparing against other tools' titles.
 
 The Saturn V example (`pyoslc/examples/saturn_v/`) already serves
 this repo's parsed models as OSLC SysML resources; see that repo's
-`docs/DOMAIN_DEVELOPMENT.md`. The STEP domain tutorial (stepper's
+`docs/DOMAIN_DEVELOPMENT.md`. The STEP domain tutorial (step242's
 mkdocs site, "Serving as OSLC") covers the geometry side.
 
 ## Baselines on this side
