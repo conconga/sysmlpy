@@ -1,0 +1,96 @@
+@startuml
+
+skinparam monochrome true
+skinparam wrapWidth 300
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+skinparam rectangle<<action def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<action>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<flow def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<flow>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<attribute def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<attribute>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<port def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<port>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<part def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<part>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+
+' Swim lane styling for actions
+skinparam rectangle<<action def>> {
+    StereotypeFontSize 11
+}
+skinparam rectangle<<action>> {
+    StereotypeFontSize 11
+}
+' Control nodes (initial/final/decision/merge/fork/join)
+skinparam circle<<initial>> {
+    BackgroundColor black
+    BorderColor black
+}
+skinparam circle<<final>> {
+    BackgroundColor white
+    BorderColor black
+}
+skinparam hexagon {
+    BackgroundColor white
+    BorderColor black
+}
+
+top to bottom direction
+
+title av [model] 8928fddc-6c52-40d0-aec7-f08198e856ae [Action Flow View]
+
+hide circle
+
+rectangle "vehicle" as E1 <<part>>
+rectangle "cruise" as E2 <<action>>
+rectangle "warmup" as E4 <<action>>
+rectangle "engage" as E5 <<action>>
+
+E1 *-- E2
+E2 *-- E4
+E2 *-- E5
+
+
+circle " " as CN1 <<initial>>
+CN1 ..> E4
+hexagon "decide" as CN2 <<decide>>
+E4 ..> CN2
+CN2 ..> E5 : speedOK
+CN2 ..> E4 : low
+circle "done" as CN3 <<final>>
+CN2 ..> CN3 : else
+
+
+@enduml

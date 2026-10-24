@@ -1,0 +1,29 @@
+@startuml
+
+skinparam monochrome true
+skinparam wrapWidth 300
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+top to bottom direction
+
+title stv [state def] Operational [State Transition View]
+
+hide circle
+
+state "Operational" as E1 {
+  state "Idle" as E2
+  state "Running" as E3
+  state "Stopped" as E4
+}
+
+[*] --> E2
+
+
+E2 --> E3 : t1
+E3 --> E2 : transition
+E3 --> E4 : transition
+
+E4 --> [*]
+
+@enduml

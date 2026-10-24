@@ -1,0 +1,2262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SysML v2.0 Parser for Python">
+      
+      
+      
+      
+        <link rel="prev" href="../LSP_EDITORS/">
+      
+      
+        <link rel="next" href="../CHANGELOG/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Status - sysmlpy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sysmlpy-project-status" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sysmlpy" class="md-header__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sysmlpy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Status
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sysmlpy" class="md-nav__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sysmlpy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vee-link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vee Link (SysML-STEP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml How-to
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sysml-magics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml magic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP_EDITORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP in Neovim & VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#in-flight-on-main-unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In Flight (on main, unreleased)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-0971" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (0.97.1)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0970" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.97.0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0964" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.4)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0963" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0962" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TODO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#in-flight-on-main-unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In Flight (on main, unreleased)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-0971" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (0.97.1)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0970" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.97.0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0964" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.4)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0963" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recent-highlights-v0962" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent Highlights (v0.96.2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sysmlpy-project-status">sysmlpy — Project Status<a class="headerlink" href="#sysmlpy-project-status" title="Permanent link">&para;</a></h1>
+<p>Current version: <strong>v0.97.1</strong> (2026-10-16)</p>
+<hr />
+<h2 id="in-flight-on-main-unreleased">In Flight (on main, unreleased)<a class="headerlink" href="#in-flight-on-main-unreleased" title="Permanent link">&para;</a></h2>
+<p>(Nothing staged.)</p>
+<h2 id="recent-highlights-0971">Recent Highlights (0.97.1)<a class="headerlink" href="#recent-highlights-0971" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Boxes action-flow view: v2-native glyphs</strong> — chamfered octagons +
+  the solid start diamond; named succession statements bind their
+  keyword control ends; flow/succession edge dedupe.</li>
+</ul>
+<h2 id="recent-highlights-v0970">Recent Highlights (v0.97.0)<a class="headerlink" href="#recent-highlights-v0970" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>CI integrations</strong> (GitHub Actions / GitLab / pre-commit, new
+  <code>sysmlpy ci</code> subcommand): parse gate blocking, semantics advisory
+  (<code>--semantic strict</code> opt-in) — see <code>docs/ci-integration.md</code>. Dogfooded
+  on this repo: the gate on the bundled library found and fixed two
+  visitor crashes on named multiplicity bounds (<code>[nCauses]</code>,
+  <code>[wallNumber]</code>).</li>
+</ul>
+<h2 id="recent-highlights-v0964">Recent Highlights (v0.96.4)<a class="headerlink" href="#recent-highlights-v0964" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>doc_ids=True</code> — source-carried explicit ids</strong>: <code>doc /* @id: … */</code>
+  inside an element's braces fixes its interchange <code>@id</code> (L3
+  identity, survives any edit); duplicate claims raise at export.
+  Placement contract pinned by tests.</li>
+</ul>
+<h2 id="recent-highlights-v0963">Recent Highlights (v0.96.3)<a class="headerlink" href="#recent-highlights-v0963" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Stable element identities (L2 + L3)</strong>: content-addressed
+  interchange <code>@id</code>s (<code>to_interchange(stable_ids=True)</code>, CLI
+  <code>--stable-ids</code>) survive insertion/reordering elsewhere; a registry
+  sidecar (<code>reconcile_ids</code> / <code>--reconcile-with model.json</code>) keeps ids
+  across ancestor renames and re-nesting — re-export with the previous
+  file as registry and name-matched elements never lose identity.</li>
+<li>Documented in full: <code>docs/stable-identities.md</code> (L0-L3 levels,
+  options, decisions); runnable demo <code>examples/element_identity.py</code>;
+  README "Element Identity: Stable Interchange IDs".</li>
+<li>Gates: interchange 59/59, fast suite 654 passed / 1 skipped.</li>
+</ul>
+<h2 id="recent-highlights-v0962">Recent Highlights (v0.96.2)<a class="headerlink" href="#recent-highlights-v0962" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Grammar upgraded to OMG release 2026-08</strong>: vendored grammar is now
+  daltskin/sysml-v2-grammar v2026.08.1 (upstream #11 expression cascade</li>
+<li>
+<h1 id="16-required-import-visibility-bare-import-x-is-a">16 required import visibility). Bare <code>import X;</code> is a<a class="headerlink" href="#16-required-import-visibility-bare-import-x-is-a" title="Permanent link">&para;</a></h1>
+<code>SysMLSyntaxError</code>.</li>
+<li><strong>Non-normative forms removed</strong> per the upstream review: bare
+  qualified identification and connector-end trailing multiplicity.
+  Normative forms (<code>connect [1] a to b;</code>, <code>subject : Q::N;</code>) round-trip.</li>
+<li>OMG XPect conformance: 123 passed / 3 skipped; grammar round-trip
+  168/168; fast suite 595 passed; KerML batteries 5/5.</li>
+</ul>
+<h2 id="recent-highlights-v0961">Recent Highlights (v0.96.1)<a class="headerlink" href="#recent-highlights-v0961" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>doc comments survive everywhere</strong>: <code>doc /* ... */</code> on packages and
+  on any usage/definition kind (previously dropped when shared with
+  sibling body items; only Requirement kept it) is captured as <code>.doc</code>
+  on the API object and re-emitted by <code>dump()</code>/<code>classtree()</code>.</li>
+<li><strong>interface ends captured</strong>: <code>end &lt;name&gt;;</code> and
+  <code>end &lt;name&gt; ::&gt; part.port;</code> in interface bodies parse into
+  <code>Interface.ends</code> / <code>Interface.iface_connections</code> (previously
+  grammar-layer only), and <code>::&gt;</code> targets survive the dump round-trip.</li>
+<li><strong>Round-trip fix</strong>: interface usages no longer dump a spurious
+  <code>connect</code> keyword (syntax error on re-parse).</li>
+<li>Flows verified end-to-end: <code>flow a to b;</code> → <code>Flow</code> child → dump →
+  Interconnection View edge.</li>
+</ul>
+<h2 id="recent-highlights-v0960">Recent Highlights (v0.96.0)<a class="headerlink" href="#recent-highlights-v0960" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>KerML parser</strong>: OMG-KEBNF-generated ANTLR4 grammar + visitor-dict
+  layer (<code>sysmlpy.kerml</code>); 130/130 <code>.kerml</code> corpus files parse.</li>
+<li><strong>LibrarySymbolIndex</strong> now parses <code>.kerml</code> library files (2,986
+  symbols, was 1,604 regex-scraped).</li>
+<li><strong>Zero correctness failures</strong> on the OMG release-repo corpus sweep
+  (404 files); Annex A SimpleVehicleModel and all interface-connect
+  forms parse.</li>
+<li><strong>Community PRs merged</strong>: port-def rendering fix (#10), boundary
+  ports (#13), interface-usage connection edges (#12), binding
+  connector rendering (#11) in the Interconnection View.</li>
+</ul>
+<h2 id="completed">Completed<a class="headerlink" href="#completed" title="Permanent link">&para;</a></h2>
+<h3 id="public-api-classes">Public API Classes<a class="headerlink" href="#public-api-classes" title="Permanent link">&para;</a></h3>
+<p>These classes are fully implemented, have programmatic construction, <code>dump()</code> serialization, and test coverage.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>SysML Keyword(s)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Package</code></td>
+<td><code>package</code></td>
+<td>Name, shortname, children, <code>load_from_grammar</code></td>
+</tr>
+<tr>
+<td><code>Model</code></td>
+<td><em>(root)</em></td>
+<td>Wraps packages; load from string</td>
+</tr>
+<tr>
+<td><code>Part</code></td>
+<td><code>part</code> / <code>part def</code></td>
+<td>Typed by, children, <code>load_from_grammar</code></td>
+</tr>
+<tr>
+<td><code>Item</code></td>
+<td><code>item</code> / <code>item def</code></td>
+<td>Typed by, children</td>
+</tr>
+<tr>
+<td><code>Attribute</code></td>
+<td><code>attribute</code> / <code>attribute def</code></td>
+<td><code>set_value</code>/<code>get_value</code> with <code>pint</code> units</td>
+</tr>
+<tr>
+<td><code>Port</code></td>
+<td><code>port</code> / <code>port def</code></td>
+<td>In/out/inout directed features, add attribute</td>
+</tr>
+<tr>
+<td><code>Action</code></td>
+<td><code>action</code> / <code>action def</code></td>
+<td>Add in/out parameters, typed by, specializes</td>
+</tr>
+<tr>
+<td><code>Reference</code></td>
+<td><code>ref</code></td>
+<td>Simple, typed, and redefinition (<code>ref :&gt;&gt; name : Type;</code>)</td>
+</tr>
+<tr>
+<td><code>Requirement</code></td>
+<td><code>requirement def</code> / <code>requirement</code></td>
+<td>Subject, actor, doc, constraint, assume constraint</td>
+</tr>
+<tr>
+<td><code>UseCase</code></td>
+<td><code>use case def</code> / <code>use case</code></td>
+<td>Subject, actor, include</td>
+</tr>
+<tr>
+<td><code>Interface</code></td>
+<td><code>interface def</code> / <code>interface</code></td>
+<td>Add end, add connection</td>
+</tr>
+<tr>
+<td><code>Message</code></td>
+<td><code>message</code></td>
+<td>From, to, of-type</td>
+</tr>
+<tr>
+<td><code>State</code></td>
+<td><code>state def</code> / <code>state</code></td>
+<td>Transitions, entry/do/exit actions, <code>.parent</code> property</td>
+</tr>
+<tr>
+<td><code>Transition</code></td>
+<td><code>transition</code></td>
+<td>Source, target, guard, trigger, effect</td>
+</tr>
+<tr>
+<td><code>Constraint</code></td>
+<td><code>constraint def</code> / <code>constraint</code></td>
+<td>Assert constraint, derivation forms</td>
+</tr>
+<tr>
+<td><code>AnalysisCase</code></td>
+<td><code>analysis def</code> / <code>analysis</code></td>
+<td>Subject, objective, result expression</td>
+</tr>
+<tr>
+<td><code>VerificationCase</code></td>
+<td><code>verification def</code> / <code>verification</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Concern</code></td>
+<td><code>concern def</code> / <code>concern</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>View</code></td>
+<td><code>view def</code> / <code>view</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Viewpoint</code></td>
+<td><code>viewpoint def</code> / <code>viewpoint</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Individual</code></td>
+<td><code>individual def</code> / <code>individual</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Metadata</code></td>
+<td><code>metadata def</code> / <code>metadata</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Rendering</code></td>
+<td><code>rendering def</code> / <code>rendering</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Allocation</code></td>
+<td><code>allocation def</code> / <code>allocation</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Flow</code></td>
+<td><code>flow def</code> / <code>flow</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Connection</code></td>
+<td><code>connection def</code> / <code>connection</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Calculation</code></td>
+<td><code>calc def</code> / <code>calc</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+<tr>
+<td><code>Enumeration</code></td>
+<td><code>enum def</code> / <code>enum</code></td>
+<td>Parse and load from grammar</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relationship-methods-on-all-usagedefinition-classes">Relationship Methods (on all Usage/Definition classes)<a class="headerlink" href="#relationship-methods-on-all-usagedefinition-classes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set_typed_by()</code></td>
+<td><code>: TypeName</code></td>
+</tr>
+<tr>
+<td><code>set_specializes()</code></td>
+<td><code>:&gt; SuperDef</code> (definitions)</td>
+</tr>
+<tr>
+<td><code>set_subsets()</code></td>
+<td><code>:&gt; superset</code> (usages)</td>
+</tr>
+<tr>
+<td><code>set_redefines()</code></td>
+<td><code>:&gt;&gt; original</code></td>
+</tr>
+<tr>
+<td><code>add_child()</code></td>
+<td>fluent child builder</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parser">Parser<a class="headerlink" href="#parser" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CLI</strong> — <code>sysmlpy</code> console script with subcommands (v0.61.0):
+  <code>parse</code> (repr/dump/grammar-JSON), <code>analyze</code> (semantic analysis with
+  CI exit codes: 0 clean, 1 findings at <code>--fail-on</code> threshold, 2 parse
+  error; text or <code>--format json</code>), <code>view --view NAME</code> (all 11 views,
+  <code>--focus</code>, <code>--element</code>, <code>--style</code>, <code>--direction</code>, <code>--format</code>, <code>-o</code>),
+  <code>format</code> (alias <code>fmt</code>, multiple files), <code>trace</code> (requirement
+  traceability &amp; verification coverage: <code>--format text|markdown|json</code>,
+  <code>--fail-on uncovered</code>, <code>-o</code>; exit 0 clean, 1 uncovered, 2 parse error).
+  <code>repl</code> (v0.93.x — interactive session: declarations accumulate with
+  member-granularity merge; <code>%eval</code>/<code>%set</code>/<code>%calc</code>/<code>%check</code>/<code>%values</code>
+  over the evaluator, <code>%sim</code>/<code>%send</code>/<code>%step</code> over the simulator,
+  <code>%view</code>, <code>%list</code>/<code>%show</code>/<code>%dump</code>/<code>%load</code>/<code>%save</code>/<code>%reset</code>).
+  Legacy flat invocation (<code>sysmlpy FILE --dump</code>) preserved with original
+  exit codes.</li>
+<li><strong>Requirement traceability</strong> — <code>sysmlpy.traceability</code>
+  (<code>extract_traceability()</code> → <code>TraceabilityReport</code> with per-requirement
+  traces, coverage queries, text/markdown/JSON output;
+  <code>as_traceability_matrix_view()</code> in markdown/html/plantuml). Satisfy /
+  verify / verification / subject relationships parse and round-trip
+  (v0.62.0).</li>
+<li><strong>JSON interchange</strong> — <code>sysmlpy.interchange</code> (<code>to_interchange()</code> /
+  <code>from_interchange()</code>): JSON-LD-style partition documents (flat
+  <code>@graph</code>, <code>@id</code>/<code>@type</code> elements, deterministic uuid5 ids) with
+  lossless import back to a live model (v0.63.0).</li>
+<li><strong>Expression evaluator</strong> — <code>sysmlpy.evaluator</code>
+  (<code>collect_values()</code> / <code>evaluate_expression()</code> /
+  <code>evaluate_calculation()</code> / <code>check_constraints()</code>): pint-bound
+  evaluation of attribute defaults, calc results and constraint bodies,
+  with what-if bindings; <code>sysmlpy eval</code> CLI (v0.64.0).</li>
+<li><strong>LSP server</strong> — <code>sysmlpy.lsp</code>: dependency-free LSP 3.17 subset
+  (diagnostics, documentSymbol, hover, definition, completion; FULL
+  text sync) over stdio; <code>sysmlpy-lsp</code> console script + <code>python -m
+  sysmlpy.lsp</code>; VS Code extension scaffold in <code>editors/vscode/</code>;
+  Neovim recipes in <code>docs/LSP.md</code> (v0.65.0).</li>
+<li><strong>Spreadsheet bridge</strong> — <code>sysmlpy.spreadsheet</code>: CSV export of the
+  tabular views (<code>--format csv</code>), XLSX workbook export (<code>sysmlpy xlsx</code>,
+  optional openpyxl extra), and spreadsheet value import into
+  evaluator bindings (<code>eval --set-file</code>, <code>import_values_csv()</code>)
+  (v0.66.0).</li>
+<li><strong>Official SysML v2 notation fidelity</strong> — edge encodings aligned to
+  the OMG pilot's PlantUML generator (thick plain connection lines,
+  heaviest binding lines, distinct redefinition arrow, send/accept
+  action edges, variant/objective/metadata edges); connection
+  endpoints now parse (was a parse stub); stv renders composite
+  states as nested blocks; gv renders connector edges (v0.67.0).</li>
+<li><strong>Boxes-backed interconnection + action flow views</strong> —
+  <code>as_interconnection_view_boxes()</code> (parts as boxes with boundary
+  ports, <code>connection</code> usages as port-to-port Z-routed edges) and
+  <code>as_action_flow_view_boxes()</code> (actions as boxes, parameters as
+  in/out ports, flows as port-to-port edges, nested actions as
+  composite children, successions as dashed <code>..&gt;</code> edges) against
+  <code>diagramboxes</code> (renamed from <code>boxes</code>, its v0.4.0); braille + SVG
+  render helpers for both (v0.68.0). Control nodes render in both:
+  PlantUML afv uses hexagons (deployment syntax has no diamond), boxes
+  afv uses true decision diamonds + start/done dots via diagramboxes
+  0.5.0, whose sugiyama port routing is obstacle-aware (v0.68.0+).
+  The PlantUML interconnection view follows official iv notation
+  (enclosure nesting, typed labels, flows/connections as the only
+  edges — flows port-to-port; v0.68.0+), and the package view follows
+  official package notation: <code>package "Name" { members }</code> enclosure,
+  leaf definition boxes, typed member labels (v0.68.0+).
+  <strong>State-machine simulation</strong> (v0.69.0): <code>sysmlpy sim FILE</code> runs a
+  <code>state def</code> machine Cameo-style — triggers fire transitions, guards
+  evaluate against model attribute values (pint-aware) with
+  <code>--set</code>/<code>set_value</code> what-if overrides, completion transitions run to
+  completion, effects are logged, and an interactive TUI shows the live
+  state with the transitions available from it (<code>--run "T1; T2"</code>
+  scripts sessions).  Guards also appear in boxes-view edge labels
+  (the shorthand-<code>when</code> extraction fix); transition <code>do</code> effects parse
+  through to the simulator — references round-trip, send/assignment
+  declarations surface as text (<code>send Alert to logger</code>, <code>x := 5</code>) —
+  and composite regions simulate with qualified names: entering a
+  composite lands in its initial substate, region transitions run
+  inside it, and composite-level transitions apply from every
+  substate.  For color-vision accessibility,
+  <code>set_stereotype_palette("okabe-ito")</code> switches the <code>style="color"</code>
+  views to the Okabe-Ito palette (<code>bw</code> remains the default).
+  <strong>Validator depth (Goal 9)</strong> starts with state-machine
+  well-formedness: <code>UNRESOLVED_TRANSITION_ENDPOINT</code> (error),
+  <code>NO_INITIAL_STATE</code> and <code>UNREACHABLE_STATE</code> (warnings) run inside
+  <code>analyze()</code> on the simulator's expanded machine descriptor.  Batch 2
+  (v0.69.1) adds <code>UNRESOLVED_TRIGGER_PAYLOAD</code> (bare and guarded <code>accept</code>
+  payloads resolve or error) and <code>REQUIREMENT_UNCOVERED</code> (requirement
+  usages with no satisfy/verify traces; defs exempt).  Batch 3
+  (v0.70.0) adds <code>UNRESOLVED_TRACE_TARGET</code> / <code>TRACE_TARGET_NOT_REQUIREMENT</code>
+  on <code>satisfy</code> targets — dangling edges no longer materialize phantom
+  requirements in coverage reports un-flagged.  Batch 4 (v0.71.0)
+  adds <code>UNRESOLVED_VERIFY_TARGET</code> and <code>CONNECTOR_DIRECTION_MISMATCH</code>;
+  batch 5 (v0.72.0) adds <code>UNRESOLVED_SATISFY_PART</code> and fixes nested
+  satisfies silently reading as uncovered; batch 6 (v0.73.0) adds
+  <code>UNRESOLVED_CONNECTOR_END</code> and <code>SATISFY_SUBJECT_TYPE_MISMATCH</code> and
+  completes Goal 9 at 29 rule codes.  Goal 8 (semantic model diff)
+  starts at v0.74.0: <code>sysmlpy.diff</code> element-level diff with text /
+  Markdown / JSON rendering and a CI-friendly <code>sysmlpy diff</code> CLI.
+  Goal 10 opens at v0.75.0: <code>*</code>/<code>/</code> unit-dimension derivation
+  (<code>UNIT_DIMENSION_DERIVATION_MISMATCH</code>, 30 rule codes) and SLL
+  error parity (<code>sll_only</code> stays in SLL prediction).  v0.76.0 adds
+  connector-end type compatibility (<code>CONNECTOR_END_TYPE_MISMATCH</code>,
+  31 rule codes) and lexer-based import extraction for dependency
+  scanning (bare imports fixed, comment/string false positives
+  gone).  v0.77.0 closes Goal 10 with CayleyStore hardening +
+  query parity, verified against a live podman Cayley v0.7 server
+  (delete/clear/get/put/len/query fixes, label-namespaced
+  subjects, NetworkX-identical glob query results).</li>
+<li><strong>Relationship legends opt-in</strong> — <code>include_legend=False</code> by
+  default everywhere; the built-in legends restated standard
+  notation and are noise. Monochrome <code>bw</code> remains the default style
+  for color-vision accessibility (v0.68.0).</li>
+<li><strong>ANTLR4 parser</strong> — default parser, using OMG grammar v2026.03.0</li>
+<li><code>load()</code>, <code>loads()</code>, <code>parse()</code>, <code>load_grammar()</code> (public API)</li>
+<li><code>load_antlr()</code>, <code>load_grammar_antlr()</code> (explicit ANTLR4 path)</li>
+<li>Full ANTLR4 visitor (<code>antlr_visitor.py</code>, ~11K lines) converting parse tree to internal dict representation</li>
+<li>Supports comments, documentation blocks, and annotating elements</li>
+<li>Supports Case, AnalysisCase, VerificationCase, and TradeStudy definitions</li>
+<li>State machine support: entry/do/exit actions, accept/send/perform/assign nodes, transitions with guards</li>
+<li>Non-raising <code>parse(text)</code> variant: returns <code>(Model, [])</code> on success, <code>(None, [errors])</code> on syntax error</li>
+</ul>
+<h3 id="grammar-round-trip-coverage-parse-dump">Grammar Round-Trip Coverage (parse → dump)<a class="headerlink" href="#grammar-round-trip-coverage-parse-dump" title="Permanent link">&para;</a></h3>
+<p><strong>168 / 168 tests passing (100%)</strong> as of v0.90.0.</p>
+<p>The suite grew from 96 to 165 cases (full-model round-trips drawn from the
+OMG spec corpus, including ActionTest / ControlNodeTest / DecisionTest
+action-body successions; v0.87.0 added view filter/expose members, guarded
+entry transitions, typed-nameless connections, and typed prefixed-usage
+round-trips; v0.88.0 added usage-body imports, satisfy valueparts, and
+accept-member name/typing/multiplicity round-trips; v0.88.1 added
+nested-definition and typed-transition round-trips). Earlier corpus-level
+fixes: implicit-package wrap vs trailing
+line comments, MetadataFeature /
+TextualRepresentation annotating elements, missing succession-member
+classes, WHEN triggers, and malformed interface ends.</p>
+<p>All categories pass, including the 14 control flow node tests (IfNode,
+WhileLoopNode, ForLoopNode, ControlNode, SendNode, AcceptNode, TerminateNode).</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Pass</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packages</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Part definitions</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Generalization / Subsetting / Redefinition</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Enumerations</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Parts</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Items</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Connections</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Ports</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Binding connectors</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Flow connections</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>States</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Expressions</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Calculations</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Constraints</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Requirements</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Control flow</td>
+<td>14</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Lifecycle metadata</td>
+<td>9</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Corpus-driven full models</td>
+<td>+17</td>
+<td>+17</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>96</strong></td>
+<td><strong>96</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="grammar-resilience-v0270">Grammar Resilience (v0.27.0)<a class="headerlink" href="#grammar-resilience-v0270" title="Permanent link">&para;</a></h3>
+<p>All 68+ <code>raise NotImplementedError</code> stubs in <code>grammar/classes.py</code> replaced with
+graceful handling. The parser no longer crashes on any edge-case input.</p>
+<p><strong>Stubs fully implemented</strong> (<code>__init__</code>, <code>dump()</code>, <code>get_definition()</code>):
+- <code>PortionKind</code> — stores <code>kind</code> field (snapshot/timeslice/individual)
+- <code>PrefixMetadataMember</code> — stores <code>memberElement</code>, dumps as <code>@&lt;name&gt;</code>
+- <code>LifeClassMembership</code> — stores <code>memberElement</code>, dumps as <code>lifeClass &lt;name&gt;</code></p>
+<p><strong>Missing classes added:</strong>
+- <code>DefinitionBody</code>, <code>DefinitionBodyItem</code>
+- <code>FeatureSpecializationPart</code>, <code>SubclassificationPart</code></p>
+<p><strong>Catch-all unknown branches</strong> → print warning instead of crashing (68 sites):
+- <code>DefinitionElement</code>, <code>InterfaceBodyItem</code>, <code>OccurrenceUsageElement</code>,
+  <code>NonOccurrenceUsageElement</code>, <code>PrimaryExpression</code>, <code>PackageBody</code>,
+  <code>RelationshipBody</code>, <code>ConnectorPart</code>, <code>FeatureSpecialization</code>, and more.</p>
+<p><strong>Expression chain classes</strong> — gracefully handle <code>None</code> child / non-empty operands:
+- <code>ConditionalExpression</code>, <code>NullCoalescingExpression</code>, <code>ImpliesExpression</code>,
+  <code>OrExpression</code>, <code>XorExpression</code>, <code>ClassificationExpression</code>,
+  <code>ExponentiationExpression</code>, <code>UnaryExpression</code>, <code>ExtentExpression</code></p>
+<h3 id="semantic-analysis-engine-v0170-v0200">Semantic Analysis Engine (v0.17.0 → v0.20.0)<a class="headerlink" href="#semantic-analysis-engine-v0170-v0200" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Symbol table</td>
+<td>✅ Complete</td>
+<td>Hierarchical scopes with parent chain lookup</td>
+</tr>
+<tr>
+<td>Import resolution</td>
+<td>✅ Complete</td>
+<td>Namespace (<code>::*</code>), membership, recursive (<code>::*::**</code>)</td>
+</tr>
+<tr>
+<td>Import visibility</td>
+<td>✅ Complete</td>
+<td><code>private</code>/<code>public</code>/<code>protected</code> enforcement</td>
+</tr>
+<tr>
+<td>Library symbol index</td>
+<td>✅ Complete</td>
+<td>88 <code>.kerml</code>/<code>.sysml</code> files, ~1,417 symbols</td>
+</tr>
+<tr>
+<td>Inheritance resolution</td>
+<td>✅ Complete</td>
+<td>Supertype chain traversal for subsetting/redefinition</td>
+</tr>
+<tr>
+<td>OCL constraints</td>
+<td>✅ 8 checks</td>
+<td>See table below</td>
+</tr>
+</tbody>
+</table>
+<h4 id="implemented-ocl-well-formness-checks">Implemented OCL Well-Formness Checks<a class="headerlink" href="#implemented-ocl-well-formness-checks" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Rule</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNDEFINED_SYMBOL</code></td>
+<td>—</td>
+<td>Reference to non-existent type or feature</td>
+</tr>
+<tr>
+<td><code>DUPLICATE_NAME</code></td>
+<td>Namespace.duplicate_names</td>
+<td>Two members with same name in a scope</td>
+</tr>
+<tr>
+<td><code>CYCLIC_SPECIALIZATION</code></td>
+<td>Type.no_cyclic_specialization</td>
+<td>Type specializing itself (directly or indirectly)</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_SUBSETTING</code></td>
+<td>Feature.subsetting_compatible</td>
+<td>Subsetting ref to undefined feature</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_REDEFINITION</code></td>
+<td>Feature.redefinition_compatible</td>
+<td>Redefinition ref to undefined feature</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_PART_DEFINITION</code></td>
+<td>Part.definition_compatible</td>
+<td>Part typed by non-PartDefinition</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_PORT_DEFINITION</code></td>
+<td>Port.definition_compatible</td>
+<td>Port typed by non-PortDefinition</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_FEATURE_CHAIN</code></td>
+<td>Feature.chaining_compatible</td>
+<td>Chained features with incompatible types</td>
+</tr>
+<tr>
+<td><code>INVALID_MULTIPLICITY_BOUNDS</code></td>
+<td>Multiplicity.bounds_valid</td>
+<td>Lower bound &gt; upper bound</td>
+</tr>
+<tr>
+<td><code>UNRESOLVED_IMPORT</code></td>
+<td>—</td>
+<td>Import target does not exist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plantuml-view-generation-v0252-v0270">PlantUML View Generation (v0.25.2 → v0.27.0)<a class="headerlink" href="#plantuml-view-generation-v0252-v0270" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>SysML v2 View</th>
+<th>Output</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>as_general_view()</code></td>
+<td>General View (GV)</td>
+<td>PlantUML</td>
+<td>All element types, full filtering</td>
+</tr>
+<tr>
+<td><code>as_package_view()</code></td>
+<td>Package View</td>
+<td>PlantUML</td>
+<td>Package structure + import arrows</td>
+</tr>
+<tr>
+<td><code>as_action_flow_view()</code></td>
+<td>ActionFlowView (AFV)</td>
+<td>PlantUML</td>
+<td>Actions + flow connections</td>
+</tr>
+<tr>
+<td><code>as_interconnection_view()</code></td>
+<td>InterconnectionView (IV)</td>
+<td>PlantUML</td>
+<td>Parts, ports, connections</td>
+</tr>
+<tr>
+<td><code>as_state_transition_view()</code></td>
+<td>StateTransitionView (STV)</td>
+<td>PlantUML</td>
+<td>States + transitions</td>
+</tr>
+<tr>
+<td><code>as_tabular_view()</code></td>
+<td>Tabular View (GridView)</td>
+<td>PlantUML / MD / HTML</td>
+<td>Configurable columns</td>
+</tr>
+<tr>
+<td><code>as_data_value_tabular_view()</code></td>
+<td>Data Value Tabular View</td>
+<td>PlantUML / MD / HTML</td>
+<td>Attribute values + units</td>
+</tr>
+<tr>
+<td><code>as_relationship_matrix_view()</code></td>
+<td>Relationship Matrix View</td>
+<td>PlantUML / MD / HTML</td>
+<td>Cross-element relationship matrix</td>
+</tr>
+</tbody>
+</table>
+<p>All views support: <code>focus</code>, <code>elements</code>, <code>show_external</code>, <code>direction</code>, B&amp;W/color toggle, <code>custom_style</code>, and legend.</p>
+<h3 id="nested-requirement-children-v0361">Nested Requirement Children (v0.36.1)<a class="headerlink" href="#nested-requirement-children-v0361" title="Permanent link">&para;</a></h3>
+<p><code>Requirement.load_from_grammar</code> now populates <code>self.children</code> with nested <code>requirement</code> usages and <code>requirement def</code> definitions encountered in the body. Previously the body walk stubbed out <code>DefinitionBodyItem</code> with <code>pass</code>, so nested requirements were parsed by the grammar but dropped from the public object tree. Deep nesting recurses; <code>.parent</code> links are set on each child. Non-requirement nested elements are skipped for now. Grammar-object round-trip is unaffected.</p>
+<h3 id="boxes-backed-state-machine-visualizer-v0360">Boxes-backed State-Machine Visualizer (v0.36.0)<a class="headerlink" href="#boxes-backed-state-machine-visualizer-v0360" title="Permanent link">&para;</a></h3>
+<p>Optional renderer that produces a <a href="https://github.com/mycr0ft/boxes"><code>boxes</code></a> Diagram with native UML state shapes (rounded <code>«state»</code> boxes, filled-circle initial pseudostate, bullseye final state, orthogonal port-to-port routing). Alternative to <code>as_state_transition_view()</code> when you don't want a PlantUML/Java runtime.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>as_state_transition_view_boxes(model, focus=None)</code></td>
+<td><code>boxes.Diagram</code></td>
+<td>Build an in-memory diagram you can introspect / extend</td>
+</tr>
+<tr>
+<td><code>render_state_transition_view(model, focus=None, routing=...)</code></td>
+<td>braille terminal string</td>
+<td>Quick terminal preview</td>
+</tr>
+<tr>
+<td><code>render_state_transition_view_svg(model, focus=..., routing=..., scale=...)</code></td>
+<td>SVG string</td>
+<td>Vector output for embedding in docs</td>
+</tr>
+</tbody>
+</table>
+<p>Handles <code>entry; then X;</code>, <code>do</code>/<code>exit</code> actions as state attributes, guarded transitions (<code>if guard</code>), shorthand <code>accept X then Y;</code>, the reserved <code>done</code> final-state target, dotted feature-chain targets (<code>S2.S3</code>), nested composite states, and <code>parallel</code> region composition. Lazy-loaded so <code>import sysmlpy</code> works without <code>boxes</code> installed. See <a href="../boxes_view/"><code>docs/boxes_view.md</code></a> for the full pseudostate landscape and worked examples.</p>
+<h3 id="storage-backends">Storage Backends<a class="headerlink" href="#storage-backends" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Dependencies</th>
+<th>Persistence</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InMemoryStore</code></td>
+<td>None</td>
+<td>Volatile</td>
+<td>Testing, small models</td>
+</tr>
+<tr>
+<td><code>NetworkXStore</code></td>
+<td>networkx</td>
+<td>Volatile</td>
+<td>Graph analysis, centrality, cycles</td>
+</tr>
+<tr>
+<td><code>KuzuStore</code></td>
+<td>kuzu</td>
+<td>Disk (optional)</td>
+<td>Embedded graph DB, Cypher queries</td>
+</tr>
+<tr>
+<td><code>CayleyStore</code></td>
+<td>requests</td>
+<td>Server-managed</td>
+<td>Remote graph DB, multi-tenant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-coverage">Test Coverage<a class="headerlink" href="#test-coverage" title="Permanent link">&para;</a></h3>
+<p>Counts from <code>pytest --collect-only</code> at v0.90.0 (1635 total).</p>
+<table>
+<thead>
+<tr>
+<th>Test file</th>
+<th>Tests</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/grammar_test.py</code></td>
+<td>165</td>
+<td>✅ All pass (100%)</td>
+</tr>
+<tr>
+<td><code>tests/semantic_test.py</code></td>
+<td>179</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/plantuml_test.py</code></td>
+<td>151</td>
+<td>✅ All pass (incl. official-notation tests)</td>
+</tr>
+<tr>
+<td><code>tests/store_test.py</code></td>
+<td>121</td>
+<td>Pass (optional deps skipped if not installed)</td>
+</tr>
+<tr>
+<td><code>tests/class_test.py</code></td>
+<td>84</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/traceability_test.py</code></td>
+<td>46</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/interchange_test.py</code></td>
+<td>38</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/evaluator_test.py</code></td>
+<td>44</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/lsp_test.py</code></td>
+<td>37</td>
+<td>✅ All pass (batch 4: 36 more in <code>tests/lsp_batch4_test.py</code>)</td>
+</tr>
+<tr>
+<td><code>tests/spreadsheet_test.py</code></td>
+<td>37</td>
+<td>✅ 35 pass, 2 skip (no openpyxl)</td>
+</tr>
+<tr>
+<td><code>tests/navigate_test.py</code></td>
+<td>42</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/cli_test.py</code></td>
+<td>39</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/repl_test.py</code></td>
+<td>28</td>
+<td>✅ Interactive REPL: session merge, %commands, loop, CLI</td>
+</tr>
+<tr>
+<td><code>tests/validator_test.py</code></td>
+<td>84</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/repr_test.py</code></td>
+<td>34</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/kuzu_store_test.py</code></td>
+<td>32</td>
+<td>Pass (skipped if kuzu not installed)</td>
+</tr>
+<tr>
+<td><code>tests/import_test.py</code></td>
+<td>31</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/cayley_store_test.py</code></td>
+<td>39</td>
+<td>Pass (skipped if cayley not installed)</td>
+</tr>
+<tr>
+<td><code>tests/boxes_view_test.py</code></td>
+<td>54</td>
+<td>Pass (skipped if diagramboxes not installed)</td>
+</tr>
+<tr>
+<td><code>tests/project_test.py</code></td>
+<td>21</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/redefined_name_test.py</code></td>
+<td>14</td>
+<td>✅ All pass (100%)</td>
+</tr>
+<tr>
+<td><code>tests/dfa_cache_test.py</code></td>
+<td>14</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/resolve_test.py</code></td>
+<td>12</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/reference_parse_test.py</code></td>
+<td>12</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/constraint_text_test.py</code></td>
+<td>12</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/two_stage_parse_test.py</code></td>
+<td>12</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/main_test.py</code></td>
+<td>7</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/partial_test.py</code></td>
+<td>7</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/palette_test.py</code></td>
+<td>6</td>
+<td>✅ All pass</td>
+</tr>
+<tr>
+<td><code>tests/conformance_test.py</code></td>
+<td>123</td>
+<td>✅ All pass (100%)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1635</strong></td>
+<td><strong>1510 fast + 123 conformance pass (2 skipped: optional deps)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>README.md</code> — installation, usage examples, view rendering docs</li>
+<li><code>AGENTS.md</code> — AI agent onboarding guide</li>
+<li><code>docs/index.md</code> — project overview</li>
+<li><code>docs/quickstart.md</code> — step-by-step usage guide</li>
+<li><code>TUTORIAL.md</code> — comprehensive guide with class mapping tables</li>
+<li><code>docs/PROJECT_SUMMARY.md</code> — work summary for future agents/team members</li>
+<li><code>docs/plantuml-reference-analysis.md</code> — PlantUML generator assessment</li>
+<li><code>docs/plantuml-examples/</code> — rendered diagram examples</li>
+</ul>
+<hr />
+<h2 id="completed-since-v0270">Completed Since v0.27.0<a class="headerlink" href="#completed-since-v0270" title="Permanent link">&para;</a></h2>
+<h3 id="dead-code-removal-lint-hygiene-v0901">Dead-Code Removal + Lint Hygiene (v0.90.1)<a class="headerlink" href="#dead-code-removal-lint-hygiene-v0901" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>~120 dead lines deleted</strong> — silently-shadowed duplicate methods
+  (<code>Action._get_definition</code>, <code>_evaluate_glued</code>, two <code>_get_child</code>
+  stubs), unused imports across 10 modules, the never-read
+  <code>sll_errors</code> local, dead locals in <code>Action.dump</code>/<code>_descend</code>/
+  <code>to_networkx_store</code>.</li>
+<li>Bare <code>except:</code> → <code>except Exception:</code> in the example scripts;
+  stale <code>requirements.txt</code> rewritten in sync with <code>pyproject.toml</code>.</li>
+<li>No behavior change: fast suite 1510 passed / 2 skipped and
+  conformance 123/123 before and after; functional smoke over every
+  touched module.</li>
+</ul>
+<h3 id="view-rendering-member-specializations-v0900">View Rendering Member Specializations (v0.90.0)<a class="headerlink" href="#view-rendering-member-specializations-v0900" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>render eng : Engine;</code> / <code>render eng2 : Engine :&gt;&gt; eng;</code> /
+  <code>render eng3[2];</code> inside a view body no longer drop typing,
+  redefinition and multiplicity on dump (the last live
+  <code>antlr_visitor.py</code> TODO); <code>_build_fsp_from_ctx()</code> builds the
+  <code>FeatureSpecializationPart</code> dict with proper group ordering.</li>
+</ul>
+<h3 id="parallel-regions-in-the-simulator-v0890">Parallel Regions in the Simulator (v0.89.0)<a class="headerlink" href="#parallel-regions-in-the-simulator-v0890" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>state def C parallel { ... }</code> simulates: entering the composite
+  activates all regions at their defaults, regions fire their own
+  transitions independently (events dispatched per region in
+  declaration order), run-to-completion applies per region, and
+  transitions out of the composite exit all regions.  <code>sim.state</code> is
+  a tuple of active leaves while regions are co-active.</li>
+<li>Nested parallel composites (a <code>parallel</code> region inside a <code>parallel</code>
+  region) activate and cascade on exit.</li>
+<li>Fixed: composites whose children were all composites were demoted to
+  plain leaves (preventing these shapes from expanding at all).</li>
+</ul>
+<h3 id="dead-code-removal-nested-definition-fidelity-v0881">Dead-Code Removal + Nested-Definition Fidelity (v0.88.1)<a class="headerlink" href="#dead-code-removal-nested-definition-fidelity-v0881" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>410 dead lines deleted</strong> — <code>_visit_nested_usage</code> and 11 more
+  zero-reference visitor helpers; the remaining <code>specialization: None</code>
+  node-declaration slots verified unreachable (grammar rejects typed
+  declarations there).</li>
+<li><strong>Nested definitions round-trip</strong> — <code>part p { state def X; }</code> and 16
+  sibling kinds were silently dropped even at the grammar-dump level;
+  the nested dispatcher now covers all package-level kinds.</li>
+<li><strong>Nested usages in state bodies surface</strong> — <code>state s1 { action a1 : A; }</code>
+  now yields an Action child with name + typed_by_name; nested states
+  keep their children.</li>
+<li><strong>Typed transitions</strong> — <code>transition t1 : T first e1;</code> keeps <code>: T</code>
+  (round-trips, typed_by_name on the Transition object).</li>
+<li><strong>Satisfy typing</strong> — members carry typed_by_name; semantic finding:
+  ors is the requirement reference, not the member name (anonymous by
+  design).</li>
+</ul>
+<h3 id="control-flow-member-fidelity-usage-body-imports-v0880">Control-Flow Member Fidelity + Usage-Body Imports (v0.88.0)<a class="headerlink" href="#control-flow-member-fidelity-usage-body-imports-v0880" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Usage-body imports</strong> — <code>part p1 { private import Q::*; }</code> (and
+  public/protected/recursive forms) round-trip; the visitor now
+  dispatches <code>importRule</code> in every body and <code>DefinitionBodyItem</code>
+  handles the Import relationship.</li>
+<li><strong><code>satisfy</code> valueparts</strong> — <code>satisfy s1 : R = 3;</code> keeps <code>= 3</code> (the
+  emitter now uses the shared <code>_visit_value_part</code> helper; the
+  expression sat one level below where it probed).</li>
+<li><strong><code>accept</code> members</strong> — <code>accept msg : M;</code> keeps name + typing
+  (was <code>accept ;</code>); multiplicities render in re-parsable source
+  order (<code>: M[1]</code>).</li>
+<li><strong>Metadata usages navigable</strong> — <code>metadata m1 : MD;</code> / <code>@m1 : MD;</code>
+  / <code>about</code> forms surface as Metadata children with name +
+  typed_by_name (<code>find('m1')</code> works).</li>
+<li><strong>Nested rendering usages</strong> — <code>part w { rendering r2 : E; }</code>
+  creates a Rendering child with name + typed_by_name.</li>
+</ul>
+<h3 id="round-trip-fidelity-close-out-view-body-members-v0870">Round-Trip Fidelity Close-Out + View Body Members (v0.87.0)<a class="headerlink" href="#round-trip-fidelity-close-out-view-body-members-v0870" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>View <code>filter</code> / <code>expose</code> members</strong> — the last known silent-drop
+  TODOs in the visitor: <code>view v { filter @e1; expose e1; }</code> now
+  parses into grammar classes and dumps back losslessly (was
+  <code>view v ;</code>).  Grammar classes <code>ElementFilterMember</code> / <code>Expose</code> /
+  <code>MembershipExpose</code> / <code>NamespaceExpose</code> implemented.</li>
+<li><strong>Guarded entry transitions</strong> — <code>entry a1; if x &gt; 0 then s2;</code>
+  round-trips (the visitor handler probed nonexistent ctx attributes
+  and the dict shape crashed the grammar class).</li>
+<li><strong>Typing round-trip on prefixed usages</strong> — <code>view v : Engine</code>,
+  <code>viewpoint</code>, <code>concern</code>, <code>allocation</code>, <code>rendering</code>, <code>connection</code>,
+  <code>individual</code> usages keep their typing on dump (visitor emitters
+  previously hardcoded <code>specialization: None</code>).</li>
+<li><strong><code>typed_by_name</code> for all dispatch kinds</strong> — viewpoint, concern,
+  allocation, rendering, metadata, individual, constraint,
+  calculation, connection, flow, satisfy, dependency now populate
+  typing names (post-pass over <code>Package.load_from_grammar</code>
+  children; extraction made idempotent).</li>
+<li><strong><code>ConnectionUsage.dump()</code> canonicalization</strong> — bare <code>connect a to
+  b;</code> no longer renders <code>connection  connect\n…</code>; typed-nameless
+  connections keep the <code>connection</code> keyword + typing.</li>
+<li><strong><code>RootNamespace</code></strong> — KerML roots load members; root-level
+  <code>ElementFilterMember</code> warns + skips (no <code>UnboundLocalError</code>).</li>
+</ul>
+<h3 id="storage-query-parity-across-backends-v0860">Storage Query Parity Across Backends (v0.86.0)<a class="headerlink" href="#storage-query-parity-across-backends-v0860" title="Permanent link">&para;</a></h3>
+<ul>
+<li>NetworkXStore gains <code>siblings</code> / <code>hub_elements</code> /
+  <code>shortest_path_between_named</code>; KuzuStore gains <code>all_paths</code> /
+  in-out degree centrality / <code>descendants_depth_limited</code> /
+  <code>neighborhood</code> / <code>impact_analysis</code> (client-side, mirroring Cayley)
+  plus hub direction validation and deterministic tie-breaking.</li>
+<li><code>TestBackendParity</code>: 14 analytics queries must return identical
+  results on NetworkX, Kùzu and a live Cayley server — the three
+  graph stores now expose the same query surface.  Goal 10 fully
+  closed.</li>
+</ul>
+<h3 id="interchange-evaluator-conditional-expressions-calc-parameters-json-ld-context-v0850">Interchange &amp; Evaluator: Conditional Expressions, Calc Parameters, JSON-LD Context (v0.85.0)<a class="headerlink" href="#interchange-evaluator-conditional-expressions-calc-parameters-json-ld-context-v0850" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Conditional expressions</strong>: <code>if &lt;cond&gt; ? &lt;then&gt; else &lt;else&gt;</code>
+  evaluate in attribute defaults, constraints, and calc bodies;
+  boolean condition enforced, nested else-chains, embedded ternaries
+  via fragment substitution, unit suffixes on branches; dump respaces
+  glued ternary text so models round-trip.</li>
+<li><strong>Calc invocation</strong>: positional <code>in</code> parameter binding with
+  declared defaults, recursion supported (depth 32), constraints can
+  call calcs with what-if bindings.</li>
+<li><strong>JSON-LD context</strong>: :func:<code>build_jsonld_context</code> produces explicit
+  term definitions (<code>&lt;vocab&gt;#&lt;name&gt;</code>); vocabulary IRI configurable
+  (no normative OMG context file exists to bundle); import normalizes
+  IRI-keyed properties.</li>
+</ul>
+<h3 id="performance-persistent-dfa-cache-profiling-harness-v0840">Performance: Persistent DFA Cache + Profiling Harness (v0.84.0)<a class="headerlink" href="#performance-persistent-dfa-cache-profiling-harness-v0840" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>sysmlpy.dfa_cache</code> — warmed parser/lexer ATN+DFA graphs pickled to
+  <code>~/.cache/sysmlpy/</code>, reinstated on cold start (3.7x faster first
+  parse on the benchmark model); <code>SYSSMLPY_DFA_CACHE</code> env +
+  <code>set_dfa_cache()</code> control; cache failures never break parsing.</li>
+<li><code>benchmarks/bench_parse.py</code> (cold/cached/warm timing) and
+  <code>benchmarks/profile_parse.py</code> (cProfile harness; parse dominates
+  ~80 %, no visitor hotspot).</li>
+</ul>
+<h3 id="lsp-incremental-sync-position-tracking-workspace-symbols-completion-v0830">LSP: Incremental Sync, Position Tracking, Workspace Symbols, <code>.</code>-Completion (v0.83.0)<a class="headerlink" href="#lsp-incremental-sync-position-tracking-workspace-symbols-completion-v0830" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Incremental text sync (ranged <code>didChange</code> edits; full-text changes
+  still accepted); UTF-16 position math with clamping.</li>
+<li>Position-tracked semantic diagnostics via source-order pairing
+  (duplicate names map to their own declaration).</li>
+<li><code>workspace/symbol</code> over open documents + workspace root <code>*.sysml</code>
+  scan (cached, capped).</li>
+<li><code>.</code>-member completion resolved through type names, surviving
+  transiently unparsable documents via the last good parse.</li>
+</ul>
+<h3 id="semantic-diff-renames-grammar-fields-state-machines-trace-gate-v0820">Semantic Diff: Renames, Grammar Fields, State Machines, Trace Gate (v0.82.0)<a class="headerlink" href="#semantic-diff-renames-grammar-fields-state-machines-trace-gate-v0820" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Rename detection: removed+added pairs with equal kind and structural
+  signature match as <code>renamed</code> (unique candidate only; ambiguous stays
+  removed+added); <code>ElementChange.old_name</code>/<code>old_qualified_name</code>.</li>
+<li>Grammar-level signature fields: <code>value</code>, <code>multiplicity</code>, <code>direction</code>,
+  <code>abstract</code> (canonical-dump heuristics); requirement <code>traces</code> edges.</li>
+<li><code>diff_state_machines()</code> — state-machine diff via the simulator's
+  <code>MachineDescriptor</code>.</li>
+<li><code>sysmlpy diff --threshold FRAC</code> change-rate CI gate;
+  <code>ModelDiff.change_rate</code> / <code>elements_old</code> / <code>elements_new</code>.</li>
+</ul>
+<h3 id="state-machine-simulation-assignment-effects-history-v0810">State-Machine Simulation: Assignment Effects &amp; History (v0.81.0)<a class="headerlink" href="#state-machine-simulation-assignment-effects-history-v0810" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>do x := &lt;expr&gt;</code> effects are evaluated (<code>evaluate_expression</code>) and
+  applied via <code>StateSimulator.set_value</code>, so later guards see the new
+  value; applied pairs surface on <code>StepRecord.assignments</code>.</li>
+<li>History pseudostates (<code>state h : HistoryUsage;</code>, <code>h : HistoryUsage;</code>,
+  or bare <code>h;</code>/<code>history;</code> references) are recognized by
+  <code>boxes_view._collect_state_machine</code> (new per-region <code>pseudostates</code>),
+  excluded from the state list, and transitions targeting them resume
+  the region's last active substate (default entry when unvisited).
+  Deep history via <code>deep_history=True</code> / <code>sysmlpy sim --deep-history</code>.</li>
+</ul>
+<h3 id="action-control-flow-node-classes-v0280v0290">Action Control-Flow Node Classes (v0.28.0–v0.29.0)<a class="headerlink" href="#action-control-flow-node-classes-v0280v0290" title="Permanent link">&para;</a></h3>
+<p>All 14 control flow grammar classes are now ported to <code>grammar/classes.py</code>:</p>
+<ul>
+<li><code>IfNode</code>, <code>WhileLoopNode</code>, <code>ForLoopNode</code>, <code>ControlNode</code>, <code>InitialNode</code>,
+  <code>InitialNodeMember</code>, <code>SendNode</code>, <code>AcceptNode</code>, <code>TerminateNode</code>,
+  <code>ActionTargetSuccession</code>, <code>ActionTargetSuccessionMember</code>,
+  <code>GuardedSuccession</code>, <code>GuardedSuccessionMember</code>,
+  <code>SourceSuccession</code>, <code>SourceSuccessionMember</code></li>
+</ul>
+<h3 id="mutation-api-stabilization-v0302">Mutation API Stabilization (v0.30.2)<a class="headerlink" href="#mutation-api-stabilization-v0302" title="Permanent link">&para;</a></h3>
+<p>All private underscore-prefixed mutation methods given public aliases:
+- <code>_set_child()</code> → <code>add_child()</code>; <code>_set_name()</code> → <code>set_name()</code>; <code>_set_typed_by()</code> → <code>set_typed_by()</code>
+- <code>_set_specializes()</code> → <code>set_specializes()</code>; <code>_set_subsets()</code> → <code>set_subsets()</code>
+- <code>_set_redefines()</code> → <code>set_redefines()</code>; <code>_get_child()</code> → <code>get_child()</code>
+- Private names kept as backward-compatible aliases.</p>
+<h3 id="model-navigation-enhancements-v0302v0310">Model Navigation Enhancements (v0.30.2–v0.31.0)<a class="headerlink" href="#model-navigation-enhancements-v0302v0310" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>find_one()</code> — single-match find with <code>LookupError</code> on ambiguity</li>
+<li><code>__iter__</code>, <code>__len__</code>, <code>__contains__</code> — container protocol on all model elements</li>
+<li><code>__str__</code> — returns SysML text (delegates to <code>dump()</code>)</li>
+<li><code>find()</code> uses <code>sysml_type=</code> keyword (legacy <code>type=</code> still works with deprecation)</li>
+<li>Typed property accessors (<code>model.parts</code>, <code>model.actions</code>, etc.)</li>
+</ul>
+<h3 id="semantic-analysis-enhancements-v0302">Semantic Analysis Enhancements (v0.30.2)<a class="headerlink" href="#semantic-analysis-enhancements-v0302" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>AnalysisResult</code> class with <code>.errors</code>, <code>.warnings</code>, <code>.raise_on_errors()</code>, <code>bool()</code></li>
+<li><code>analyze(model, strict=True)</code> raises immediately on errors</li>
+<li><code>SysMLSyntaxError</code> exported from package root</li>
+<li>Non-raising <code>parse()</code> variant: <code>model, errors = parse(text)</code></li>
+</ul>
+<h3 id="jupyter-integration-v0302">Jupyter Integration (v0.30.2)<a class="headerlink" href="#jupyter-integration-v0302" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>_repr_html_()</code> on all model elements — collapsible HTML tree in notebooks</li>
+</ul>
+<h3 id="grammar-round-trip-v0310">Grammar Round-Trip (v0.31.0)<a class="headerlink" href="#grammar-round-trip-v0310" title="Permanent link">&para;</a></h3>
+<ul>
+<li>All 97 grammar tests pass (100%) — control flow, successions, lifecycle metadata complete. New tests/redefined_name_test.py (8 tests) for re-declaration name resolution and <code>References</code> (<code>:&gt;</code>, <code>references</code>) handling.</li>
+<li>No deferred tests remaining</li>
+</ul>
+<hr />
+<h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>antlr_visitor.py</code></td>
+<td>~~Top-level attribute multiplicity not captured~~ <strong>Resolved</strong> — bounds since v0.40.0, <code>ordered</code>/<code>nonunique</code> flags since v0.59.0 (note: <code>nonunique ordered</code> canonicalizes to <code>ordered nonunique</code> on dump; grammatically identical).</td>
+</tr>
+<tr>
+<td><code>definition.py</code> (<code>RootNamespace</code>)</td>
+<td>~~<code>load_package_body()</code> raises <code>NotImplementedError</code> for <code>AliasMember</code> and <code>Import</code> nodes~~ <strong>Resolved in v0.58.0</strong> — node types were already dispatched; the real gap (imports/aliases moved to the end of the package body on public-API dump) is fixed. KerML <code>NamespaceBodyElement</code> roots load their members since v0.87.0.</td>
+</tr>
+<tr>
+<td><code>usage.py</code></td>
+<td>~~Type relationships (<code>: TypeName</code>) not preserved in <code>load_from_grammar()</code>~~ <strong>Fixed in v0.57.0</strong> — <code>_extract_specialization_info()</code> hoisted to base <code>Usage</code>; <code>typed_by_name</code> now populates on all usage kinds, including the prefixed kinds (<code>view</code>, <code>viewpoint</code>, <code>concern</code>, <code>allocation</code>, <code>rendering</code>, <code>constraint</code>, <code>connection</code>) whose dispatch branches skipped it — wired via a post-pass in v0.87.0. <code>typedby</code> object resolution is a follow-up.</td>
+</tr>
+<tr>
+<td><code>semantic.py</code></td>
+<td><code>*</code>/<code>/</code> dimension derivation (<code>mass * speed → ForceValue</code> inference) not yet implemented (future); <code>+</code>/<code>-</code> dimension equality and operand-category checks are complete (v0.55.0).</td>
+</tr>
+<tr>
+<td><code>antlr_parser.py</code></td>
+<td>SLL error <em>wording</em> may differ from LL wording (<code>missing '}' at '&lt;EOF&gt;'</code> vs <code>extraneous input '&lt;EOF&gt;' ...</code>); source position always matches (v0.56.0).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="remaining-work">Remaining Work<a class="headerlink" href="#remaining-work" title="Permanent link">&para;</a></h2>
+<h3 id="high-priority">High Priority<a class="headerlink" href="#high-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~Typed-by preservation~</td>
+<td><strong>Done in v0.57.0, extended in v0.87.0</strong> — <code>_typed_by_name</code> / <code>typed_by_name</code> preserved for all usage kinds loaded from grammar. v0.57.0 covered <code>Part</code>, <code>Attribute</code>, <code>Item</code>, <code>Port</code>, <code>Action</code>, <code>Interface</code>, <code>UseCase</code>, <code>Requirement</code>, <code>State</code>, behavior children; v0.87.0 wired the prefixed kinds (<code>view</code>, <code>viewpoint</code>, <code>concern</code>, <code>allocation</code>, <code>rendering</code>, <code>constraint</code>, <code>connection</code>, <code>individual</code>, <code>metadata</code>, <code>satisfy</code>) whose dispatch branches assigned grammar manually, and made the <em>visitor</em> emit <code>specialization</code> for view/viewpoint/concern/allocation/rendering/connection/individual so <code>view v : Engine</code> round-trips its typing. Resolving <code>typedby</code> to the definition <em>object</em> via a model pass remains a follow-up.</td>
+</tr>
+<tr>
+<td>~Fix top-level attribute multiplicity~</td>
+<td><strong>Verified fixed (v0.40.0) + flags bug fixed in v0.59.0</strong> — bounds (<code>[N]</code>, <code>[N..M]</code>, <code>[*]</code>) already survived since v0.40.0 (docs were stale); the real remaining bug was <code>ordered</code>/<code>nonunique</code> hardcoded <code>False</code> in the visitor extractors plus a <code>MultiplicityPart.dump()</code> XOR-guard that dropped <code>ordered</code>. All fixed.</td>
+</tr>
+<tr>
+<td>~AliasMember / Import handling~</td>
+<td><strong>Done in v0.58.0</strong> — nodes were already parsed and held on <code>Package.imports</code> (definition.py); the gap was <code>_ensure_body()</code> reordering imports/aliases to the end of the body on dump. Source-order interleaving now preserved in both Model and Package rebuild paths.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="medium-priority">Medium Priority<a class="headerlink" href="#medium-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~Feature chain type resolution~</td>
+<td><strong>Done in v0.60.0</strong> — <code>ReferenceCollector</code> tags reference kind (<code>typing</code>/<code>subsetting</code>/<code>redefinition</code>/<code>subclassification</code>); chain check applies only to genuine feature chains (fixes false <code>INCOMPATIBLE_FEATURE_CHAIN</code> on every qualified type name like <code>ScalarValues::Real</code>). Dotted expression chains (<code>wheels.hub.mass</code>) resolve through the declared <em>type</em> of each feature, following <code>:&gt;</code> inheritance; members of an enclosing usage's declared type (<code>part myCar : Car { attribute x :&gt; engine::power; }</code>) resolve for <code>::</code>, <code>.</code>, and single-member references (<code>_resolve_through_context</code>); inherited chain features advance to their declared type in the compatibility check. 17 tests.</td>
+</tr>
+<tr>
+<td>~Connection multiplicity ends~</td>
+<td><strong>Verified fixed (v0.87.0)</strong> — <code>connect c1[0..1] to c2[1];</code> parses and the multiplicity ends survive the round-trip (round-trip test <code>test_bare_connect_dump_canonical</code>).</td>
+</tr>
+<tr>
+<td>~Nested <code>:&gt;&gt;</code> redefines in return~</td>
+<td><strong>Verified working (v0.87.0)</strong> — <code>return attribute X : Type { :&gt;&gt; feature = expr; }</code> parses and round-trips.</td>
+</tr>
+<tr>
+<td>~Connector end compatibility~</td>
+<td><strong>Done in v0.76.0</strong> — full type-assignability check in <code>_check_connector_ends_compatible()</code> flags <code>CONNECTOR_END_TYPE_MISMATCH</code> (warning).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="low-priority">Low Priority<a class="headerlink" href="#low-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grammar auto-update pipeline</td>
+<td>Automated refresh from the OMG KEBNF spec when new releases drop</td>
+</tr>
+<tr>
+<td>Full OCL constraint library</td>
+<td>Machine-readable OCL constraints extendable without code changes</td>
+</tr>
+<tr>
+<td>Parse library files (not regex)</td>
+<td>Replace <code>LibrarySymbolIndex._extract_from_file()</code> with actual parsing</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="conformance-test-suite">Conformance Test Suite<a class="headerlink" href="#conformance-test-suite" title="Permanent link">&para;</a></h2>
+<p>Source: <strong>SysML-v2-Pilot-Implementation-2026-03</strong> (<code>org.omg.sysml.xpect.tests</code>)
+Library: <strong>88 files</strong> bundled at <code>src/sysmlpy/library/</code> (kernel/ systems/ domain/)
+Test files: <strong>123 <code>.sysml</code> files</strong> under <code>tests/sysmlv2/</code>, each with a <code>.error</code> sidecar</p>
+<p>Run with: <code>poetry run pytest -m conformance</code></p>
+<h3 id="current-results-2026-05-27">Current results (2026-05-27)<a class="headerlink" href="#current-results-2026-05-27" title="Permanent link">&para;</a></h3>
+<p><strong>123 / 123 passing (100%)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Files</th>
+<th>Pass</th>
+<th>Fail</th>
+<th>Pass %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>simpletests/</code></td>
+<td>37</td>
+<td>37</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><code>validation/valid/</code></td>
+<td>34</td>
+<td>34</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><code>validation/invalid/</code></td>
+<td>47</td>
+<td>47</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><code>expression/</code></td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><code>linking/</code></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>123</strong></td>
+<td><strong>123</strong></td>
+<td><strong>0</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-counts">Summary Counts<a class="headerlink" href="#summary-counts" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public API classes (complete)</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Grammar classes with <code>get_definition()</code></td>
+<td><strong>358 of 358 (100%, reflection-audited)</strong></td>
+</tr>
+<tr>
+<td>Grammar classes with graceful fallback</td>
+<td>All 358 (no more NotImplementedError crashes)</td>
+</tr>
+<tr>
+<td>Unit + grammar + integration tests</td>
+<td>809 passing</td>
+</tr>
+<tr>
+<td>Grammar round-trip tests passing</td>
+<td><strong>143 / 143 (100%)</strong></td>
+</tr>
+<tr>
+<td>Helper-property tests</td>
+<td>8 / 8</td>
+</tr>
+<tr>
+<td>Grammar-side References dispatch</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>PlantUML rendering tests</td>
+<td><strong>108 passing</strong></td>
+</tr>
+<tr>
+<td>Conformance tests (2026-03 XPect suite)</td>
+<td><strong>123 / 123 (100%)</strong></td>
+</tr>
+<tr>
+<td>Semantic analysis tests</td>
+<td><strong>153 passing</strong></td>
+</tr>
+<tr>
+<td>Storage backend tests</td>
+<td><strong>97 passing</strong> (optional deps skipped if missing)</td>
+</tr>
+<tr>
+<td>Bundled standard library files</td>
+<td>88 (kernel <code>.kerml</code> + systems <code>.sysml</code> + domain <code>.sysml</code>)</td>
+</tr>
+<tr>
+<td>Library symbols indexed</td>
+<td>~1,604 (incl. library <code>function</code> declarations, v0.54.0)</td>
+</tr>
+<tr>
+<td>PlantUML view functions</td>
+<td>10 (GV, PV, AFV, IV, STV, SV, CV, Tabular, DataValue, RelMatrix)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

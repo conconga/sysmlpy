@@ -1,0 +1,87 @@
+@startuml
+
+skinparam monochrome true
+skinparam wrapWidth 300
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+skinparam rectangle<<part def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<part>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<port def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<port>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<interface def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<interface>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<item def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<item>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<attribute def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<attribute>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<connection def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<connection>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<flow def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<flow>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+
+top to bottom direction
+
+title iv [model] b942d530-26fa-409a-b0d5-29bc9cccee63 [Interconnection View]
+
+hide circle
+
+rectangle "Controller" as E8 <<part def>> {
+    rectangle "s : Sensor" as E9 <<part>> {
+        rectangle "output" as P1 <<port>>
+    }
+    rectangle "p : Processor" as E10 <<part>> {
+        rectangle "input" as P2 <<port>>
+        rectangle "output" as P3 <<port>>
+    }
+    rectangle "a : Actuator" as E11 <<part>> {
+        rectangle "input" as P4 <<port>>
+    }
+}
+
+P1 --> P2 : f1
+P3 --> P4 : f2
+
+@enduml

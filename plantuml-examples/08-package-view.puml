@@ -1,0 +1,87 @@
+@startuml
+
+skinparam monochrome true
+skinparam wrapWidth 300
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+skinparam rectangle<<package>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<part def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<part>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<item def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<item>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<action def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<action>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<attribute def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<attribute>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<requirement def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<requirement>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<view def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<view>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam folder<<view def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam folder<<view>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+
+top to bottom direction
+
+title gv [model] a98d84b2-2f02-41cb-9852-6ccb0904e846 [Package View]
+
+hide circle
+
+package "VehicleSystem" as E5 {
+    package "Powertrain" as E6 {
+        rectangle "Engine" as E1 <<part def>>
+        rectangle "Transmission" as E2 <<part def>>
+    }
+    package "Chassis" as E7 {
+        rectangle "Wheel" as E3 <<part def>>
+        rectangle "Suspension" as E4 <<part def>>
+    }
+}
+
+
+@enduml

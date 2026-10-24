@@ -1,0 +1,23 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+skinparam defaultFontName Monospaced
+
+title gv [model] f51dbee0-f365-4b08-81b3-a0693fbaadb3 [Textual Notation]
+
+note as TextualNotation
+part def Wheel
+  attribute radius
+  attribute pressure
+part def BrakeSystem
+  attribute padThickness
+part def VehicleAssembly
+  part frontLeft
+  part frontRight
+  part brakes
+part myVehicle
+end note
+
+@enduml

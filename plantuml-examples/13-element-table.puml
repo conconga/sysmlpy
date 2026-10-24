@@ -1,0 +1,31 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+title grv [model] f51dbee0-f365-4b08-81b3-a0693fbaadb3 [Element Table]
+
+rectangle "<b>Name</b>|<b>Type</b>|<b>Kind</b>|<b>Parent</b>" as HEADER #LightGray
+rectangle "Wheel|part def|def|(root)" as R0
+rectangle "radius|attribute|usage|Wheel" as R1
+rectangle "pressure|attribute|usage|Wheel" as R2
+rectangle "BrakeSystem|part def|def|(root)" as R3
+rectangle "padThickness|attribute|usage|BrakeSystem" as R4
+rectangle "VehicleAssembly|part def|def|(root)" as R5
+rectangle "frontLeft|part|usage|VehicleAssembly" as R6
+rectangle "frontRight|part|usage|VehicleAssembly" as R7
+rectangle "brakes|part|usage|VehicleAssembly" as R8
+rectangle "myVehicle|part|usage|(root)" as R9
+HEADER -[hidden]- R0
+R0 -[hidden]- R1
+R1 -[hidden]- R2
+R2 -[hidden]- R3
+R3 -[hidden]- R4
+R4 -[hidden]- R5
+R5 -[hidden]- R6
+R6 -[hidden]- R7
+R7 -[hidden]- R8
+R8 -[hidden]- R9
+
+@enduml

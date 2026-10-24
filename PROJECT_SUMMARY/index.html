@@ -1,0 +1,2390 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SysML v2.0 Parser for Python">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>sysmlpy — Project Work Summary - sysmlpy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sysmlpy-project-work-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sysmlpy" class="md-header__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sysmlpy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              sysmlpy — Project Work Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sysmlpy" class="md-nav__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sysmlpy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vee-link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vee Link (SysML-STEP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml How-to
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sysml-magics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml magic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP_EDITORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP in Neovim & VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TODO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-been-accomplished" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Been Accomplished
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What&#39;s Been Accomplished">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parsing-100-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parsing (100% Conformance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grammar-round-trip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grammar Round-Trip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-analysis-v0170-v0540" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Analysis (v0.17.0 → v0.54.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-file-projects-v0210" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-File Projects (v0.21.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface-v0610-adoption-roadmap-goal-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Line Interface (v0.61.0 — Adoption Roadmap Goal 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boxes-backed-views-v0680-goal-6-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boxes-Backed Views (v0.68.0 — Goal 6 phase 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#official-sysml-v2-notation-fidelity-v0670-goal-6-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Official SysML v2 Notation Fidelity (v0.67.0 — Goal 6 phase 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spreadsheet-bridge-v0660-adoption-roadmap-goal-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spreadsheet Bridge (v0.66.0 — Adoption Roadmap Goal 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-server-protocol-v0650-adoption-roadmap-goal-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language Server Protocol (v0.65.0 — Adoption Roadmap Goal 5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-evaluation-v0640-adoption-roadmap-goal-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expression Evaluation (v0.64.0 — Adoption Roadmap Goal 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-interchange-v0630-adoption-roadmap-goal-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Interchange (v0.63.0 — Adoption Roadmap Goal 3)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Interchange (v0.63.0 — Adoption Roadmap Goal 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#element-identity-parse-uuid4-vs-interchange-uuid5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Element identity: parse uuid4 vs interchange uuid5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-traceability-v0620-adoption-roadmap-goal-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement Traceability (v0.62.0 — Adoption Roadmap Goal 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plantuml-view-renderings-v0252-v0270" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlantUML View Renderings (v0.25.2 → v0.27.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stylistic-checks-v0255" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stylistic Checks (v0.25.5)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stylistic Checks (v0.25.5)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implemented-ocl-well-formness-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implemented OCL Well-Formness Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-model-diff-v0740-goal-8-batch-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Model Diff (v0.74.0 — Goal 8 batch 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal-910-validator-hardening-v0690-v0770" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal 9/10 Validator Hardening (v0.69.0 → v0.77.0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Backends
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Design Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Design Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-antlr4-over-textx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ANTLR4 over textX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-grammar-class-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Grammar Class Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-two-level-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Two-Level Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-semantic-analysis-is-opt-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Semantic Analysis is Opt-In
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-import-visibility-is-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Import Visibility is Required
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-multiplicity-is-stored-in-featurespecializationpart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Multiplicity is Stored in FeatureSpecializationPart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-technical-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Issues and Technical Debt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known Issues and Technical Debt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolved
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Medium Priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low Priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#semantic-analysis-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Analysis Extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parser-and-grammar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser and Grammar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-and-standard-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library and Standard Compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potential-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Potential Pitfalls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potential Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grammar-class-children-property-is-fragile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Grammar Class children Property is Fragile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-visitor-dict-structure-is-not-typed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Visitor Dict Structure is Not Typed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multiplicity-structure-is-deeply-nested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Multiplicity Structure is Deeply Nested
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-import-visibility-propagation-is-complex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Import Visibility Propagation is Complex
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-symbol-table-and-model-tree-are-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Symbol Table and Model Tree are Separate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-multi-file-package-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Multi-File Package Merging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-antlr-grammar-updates-require-visitor-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. ANTLR Grammar Updates Require Visitor Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-python-313-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Python 3.13 Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-ocl-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a New OCL Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-storage-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a New Storage Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-multi-file-loading-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Multi-File Loading Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contact
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sysmlpy-project-work-summary">sysmlpy — Project Work Summary<a class="headerlink" href="#sysmlpy-project-work-summary" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>For:</strong> Future agents and team members
+<strong>Last Updated:</strong> September 30, 2026
+<strong>Current Version:</strong> v0.96.4
+<strong>Repository:</strong> https://github.com/mycr0ft/sysmlpy
+<strong>Roadmap:</strong> the 10-goal Adoption Roadmap (docs/archive/DEVELOPMENT_PLAN.md,
+now archived) is <strong>complete</strong> as of v0.77.0 — see CHANGELOG.md</p>
+</blockquote>
+<hr />
+<h2 id="project-overview">Project Overview<a class="headerlink" href="#project-overview" title="Permanent link">&para;</a></h2>
+<p><strong>sysmlpy</strong> is a pure Python library for parsing, manipulating, and validating SysML v2.0 models. It uses an ANTLR4 parser (based on the <a href="https://github.com/daltskin/sysml-v2-grammar">OMG SysML v2 grammar</a>) and provides both a programmatic API for building models and a semantic analysis engine for validating them.</p>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sysmlpy/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── src/sysmlpy/
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── __init__.py          # Public API: loads(), load(), analyze(), load_files(), load_project()
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── antlr_parser.py      # ANTLR4 lexer/parser — two-stage SLL→LL (v0.56.0)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── antlr_visitor.py     # ~12.3K lines: parse tree → internal dict
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── grammar/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │   ├── classes.py       # ~9.7K lines: grammar class hierarchy (no NotImplementedError)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │   └── antlr4/          # Generated ANTLR parser/lexer
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── definition.py        # Model, Package, RootNamespace classes
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── usage.py             # Part, Item, Attribute, Port, Action, etc.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── semantic.py          # Semantic analysis engine (~2.7K lines)
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── project.py           # Multi-file project loading (load_files, load_project)
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── store.py             # Storage backends + query extensions (paths/impact/Cypher)
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   ├── plantuml.py          # PlantUML diagram generation
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── boxes_view.py        # Optional boxes-backed state-machine visualizer (v0.36.0)
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── formatting.py        # classtree() for round-trip serialization
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   ├── navigate.py          # Searchable mixin for model traversal
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   └── library/             # Bundled SysML v2 standard library (88 files)
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│       ├── kernel/          # KerML core (ScalarValues, Base, Collections, etc.)
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│       ├── systems/         # SysML base (SysML.sysml)
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│       └── domain/          # ISQ, SI units, base quantities
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>├── tests/
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   ├── grammar_test.py      # 143 round-trip tests (143 pass, 0 deferred)
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│   ├── class_test.py        # 61 programmatic API tests
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│   ├── main_test.py         # 7 integration tests
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│   ├── plantuml_test.py     # 122 PlantUML view rendering tests
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│   ├── boxes_view_test.py   # 19 boxes-backed state-machine visualizer tests (v0.36.0)
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│   ├── semantic_test.py     # 153 semantic analysis tests
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│   ├── project_test.py      # 17 multi-file loading tests
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│   ├── navigate_test.py     # 42 model navigation tests
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│   ├── import_test.py       # 21 import resolution tests
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│   ├── validator_test.py    # 34 validator tests
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│   ├── store_test.py        # 82 storage backend tests
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>│   ├── conformance_test.py  # 123 OMG XPect conformance tests
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>│   └── sysmlv2/             # Conformance test fixtures
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>└── docs/                    # Documentation
+</code></pre></div>
+<h3 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SysML text → ANTLR4 Lexer/Parser → Parse Tree
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    → antlr_visitor.py (parse_to_dict) → Internal dict
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    → grammar/classes.py (grammar objects) → Model tree
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    → usage.py / definition.py (public classes) → User-facing API
+</code></pre></div>
+<hr />
+<h2 id="whats-been-accomplished">What's Been Accomplished<a class="headerlink" href="#whats-been-accomplished" title="Permanent link">&para;</a></h2>
+<h3 id="parsing-100-conformance">Parsing (100% Conformance)<a class="headerlink" href="#parsing-100-conformance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ANTLR4 parser</strong> with full SysML v2 grammar support</li>
+<li><strong>123/123 OMG XPect conformance tests pass</strong> (100%)</li>
+<li>Visitor converts parse trees to internal dict representation (~12.3K lines)</li>
+<li>Supports all SysML v2 element types: packages, parts, items, ports, actions, states, requirements, interfaces, flows, connections, calculations, constraints, enumerations, cases, views, viewpoints, etc.</li>
+</ul>
+<h3 id="grammar-round-trip">Grammar Round-Trip<a class="headerlink" href="#grammar-round-trip" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>168/168 grammar round-trip tests pass</strong> (100%)</li>
+<li>Every grammar class has <code>dump()</code> and <code>get_definition()</code> for serialization —
+  v0.53.1 added <code>get_definition()</code> to the final 36 missing classes and
+  verified 358/358 via reflection audit</li>
+<li>All 68+ <code>raise NotImplementedError</code> stubs replaced with graceful handling (v0.27.0)</li>
+<li>Missing classes added: <code>DefinitionBody</code>, <code>DefinitionBodyItem</code>, <code>FeatureSpecializationPart</code>, <code>SubclassificationPart</code></li>
+<li><code>classtree()</code> converts Model tree back to text</li>
+<li>v0.96.2: grammar upgraded to daltskin v2026.08.1 (OMG 2026-08 KEBNF,
+  #11 expression cascade, #16 required import visibility); withdrawn
+  non-normative forms removed; all normative gates green</li>
+<li>v0.96.1: <code>doc /* ... */</code> comments on packages and all usage/definition
+  kinds (<code>.doc</code> attribute) and interface ends (<code>end p;</code>,
+  <code>end p ::&gt; part.port;</code> → <code>Interface.ends</code> / <code>Interface.iface_connections</code>)
+  survive the round-trip; interface usages no longer dump a spurious
+  <code>connect</code> keyword</li>
+</ul>
+<h3 id="semantic-analysis-v0170-v0540">Semantic Analysis (v0.17.0 → v0.54.0)<a class="headerlink" href="#semantic-analysis-v0170-v0540" title="Permanent link">&para;</a></h3>
+<p>The semantic analysis engine (<code>semantic.py</code>) provides comprehensive validation:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Symbol Resolution</strong></td>
+<td>✅ Complete</td>
+<td>Hierarchical symbol table with parent chain lookup</td>
+</tr>
+<tr>
+<td><strong>Import Resolution</strong></td>
+<td>✅ Complete</td>
+<td>Namespace (<code>::*</code>), membership, recursive (<code>::*::**</code>)</td>
+</tr>
+<tr>
+<td><strong>Import Visibility</strong></td>
+<td>✅ Complete</td>
+<td><code>private</code>/<code>public</code>/<code>protected</code> enforcement</td>
+</tr>
+<tr>
+<td><strong>Library Symbol Index</strong></td>
+<td>✅ Complete</td>
+<td>Scans 88 <code>.kerml</code>/<code>.sysml</code> files (~1,604 symbols, incl. <code>function</code> decls)</td>
+</tr>
+<tr>
+<td><strong>Inheritance Resolution</strong></td>
+<td>✅ Complete</td>
+<td>Supertype chain traversal for subsetting/redefinition</td>
+</tr>
+<tr>
+<td><strong>Expression Name Resolution</strong></td>
+<td>✅ Complete (v0.54.0)</td>
+<td>Identifiers in constraint/calc/default/guard bodies resolve against the symbol table; segment-by-segment feature-chain resolution</td>
+</tr>
+<tr>
+<td><strong>Expression Type Checking</strong></td>
+<td>✅ Complete (v0.55.0)</td>
+<td>Operand-category rules (<code>OPERAND_TYPE_MISMATCH</code>) + <code>+</code>/<code>-</code> unit-dimension safety via pint (<code>UNIT_DIMENSION_MISMATCH</code>); <code>const_fold()</code> static reduction</td>
+</tr>
+<tr>
+<td><strong>OCL Constraints</strong></td>
+<td>✅ 8 of 8</td>
+<td>See table below</td>
+</tr>
+</tbody>
+</table>
+<h3 id="multi-file-projects-v0210">Multi-File Projects (v0.21.0)<a class="headerlink" href="#multi-file-projects-v0210" title="Permanent link">&para;</a></h3>
+<p>Three new API functions enable cross-file import resolution:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>load_files(files, library=None)</code></td>
+<td>Load multiple files; merge packages with same name</td>
+</tr>
+<tr>
+<td><code>load_project(root, entry=None)</code></td>
+<td>Load all <code>.sysml</code>/<code>.kerml</code> files in a directory</td>
+</tr>
+<tr>
+<td><code>load_with_dependencies(entry, search_paths)</code></td>
+<td>Load entry file and recursively resolve imports</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Package merging: files defining the same package namespace are combined</li>
+<li>Import resolution: cross-file type references resolve correctly</li>
+<li>Standard library validation: <code>ScalarValues</code>, <code>ISQ</code>, etc. recognized as valid</li>
+<li>12 new tests in <code>tests/project_test.py</code></li>
+</ul>
+<h3 id="command-line-interface-v0610-adoption-roadmap-goal-1">Command Line Interface (v0.61.0 — Adoption Roadmap Goal 1)<a class="headerlink" href="#command-line-interface-v0610-adoption-roadmap-goal-1" title="Permanent link">&para;</a></h3>
+<p>The <code>sysmlpy</code> console script exposes subcommands with CI-friendly exit
+codes (0 = success/clean, 1 = findings at threshold / operational error,
+2 = parse or load failure):</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sysmlpy analyze FILE [FILE...]</code></td>
+<td>Semantic analysis; text or <code>--format json</code> output; <code>--fail-on {error,warning,never}</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy view FILE --view NAME</code></td>
+<td>Render any of the 11 views (<code>gv</code>, <code>pv</code>, <code>afv</code>, <code>iv</code>, <code>stv</code>, <code>sv</code>, <code>cv</code>, <code>tabular</code>, <code>datavalue</code>, <code>matrix</code>, <code>browser</code>) to stdout or <code>-o FILE</code>; <code>--focus</code>, <code>--element</code>, <code>--style</code>, <code>--direction</code>, <code>--format</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy parse FILE</code></td>
+<td>Parse and print repr / <code>--dump</code> / <code>--json</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy format FILE...</code></td>
+<td>Canonicalize in place (<code>-i</code>) or verify (<code>--check</code>); alias <code>fmt</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy trace FILE [FILE...]</code></td>
+<td>Requirement traceability &amp; verification coverage report; <code>--format text\|markdown\|json</code>, <code>--fail-on uncovered</code>, <code>-o FILE</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy export FILE [FILE...]</code></td>
+<td>SysML → JSON interchange (JSON-LD-style <code>@graph</code> of <code>@id</code>/<code>@type</code> elements); <code>--compact</code>, <code>-o FILE</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy import FILE.json</code></td>
+<td>JSON interchange → SysML v2 text; <code>-o FILE</code></td>
+</tr>
+<tr>
+<td><code>sysmlpy eval FILE [FILE...]</code></td>
+<td>Evaluate expressions / attribute values / constraints; <code>--expr X --set n=v --element Q --constraints</code>; exit 1 on failed constraint</td>
+</tr>
+<tr>
+<td><code>sysmlpy sim FILE</code></td>
+<td>Simulate a <code>state def</code> machine: triggers, real guard evaluation (<code>--set</code> overrides), run-to-completion, interactive TUI or <code>--run "T1; T2"</code>; needs the <code>sim</code> extra</td>
+</tr>
+</tbody>
+</table>
+<p>The legacy flat form (<code>sysmlpy FILE --dump</code>) is preserved with its
+original exit codes. Example CI usage:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sysmlpy<span class="w"> </span>analyze<span class="w"> </span>model/*.sysml<span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>--fail-on<span class="w"> </span>error
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sysmlpy<span class="w"> </span>trace<span class="w"> </span>model/*.sysml<span class="w"> </span>--fail-on<span class="w"> </span>uncovered<span class="w"> </span>--format<span class="w"> </span>markdown<span class="w"> </span>-o<span class="w"> </span>coverage.md
+</code></pre></div>
+<h3 id="boxes-backed-views-v0680-goal-6-phase-2">Boxes-Backed Views (v0.68.0 — Goal 6 phase 2)<a class="headerlink" href="#boxes-backed-views-v0680-goal-6-phase-2" title="Permanent link">&para;</a></h3>
+<p>Java-free rendering through the sibling <code>diagramboxes</code> package
+(renamed from <code>boxes</code> — PyPI name collision; its v0.4.0 adds nested
+composite nodes):
+- <code>as_interconnection_view_boxes()</code> — parts as boxes with boundary
+  ports, <code>connection</code> usages as port-to-port Z-routed edges,
+  <code>focus=</code> filtering; braille + SVG helpers.
+- <code>as_action_flow_view_boxes()</code> — actions as boxes («action» +
+  typed name), declared parameters as in/left out/right ports, flow
+  connections as port-to-port edges, inline nested actions as
+  composite children, action defs with structure as «action def»
+  composites, successions as dashed <code>..&gt;</code> edges.
+- Relationship legends are opt-in (<code>include_legend=False</code> default)
+  — built-in legends restated standard notation. Monochrome <code>bw</code>
+  remains the default style for color-vision accessibility.</p>
+<h3 id="official-sysml-v2-notation-fidelity-v0670-goal-6-phase-1">Official SysML v2 Notation Fidelity (v0.67.0 — Goal 6 phase 1)<a class="headerlink" href="#official-sysml-v2-notation-fidelity-v0670-goal-6-phase-1" title="Permanent link">&para;</a></h3>
+<p>Edge encodings follow the OMG pilot's PlantUML generator: connections
+are thick plain lines (<code>-[thickness=3]-</code>, arrow only with metadata),
+bindings are the heaviest lines (<code>-[thickness=5]-</code>, «bind»/<code>=</code>),
+redefinition is distinct from specialization (<code>--||&gt;</code> vs <code>--|&gt;</code>),
+send/accept actions use <code>..&gt;&gt;</code>/<code>&lt;&lt;..</code>. Connection endpoints now parse
+(<code>connection clutch connect engine to drivetrain</code> survives into the
+object tree); <code>as_general_view(..., auto_include_connections=True)</code>
+emits connection edges; <code>as_state_transition_view</code> nests composite
+states as PlantUML state blocks. Research corpus + edge table:
+<code>~/research/notation_corpus/NOTATION_RESEARCH.md</code>.</p>
+<h3 id="spreadsheet-bridge-v0660-adoption-roadmap-goal-7">Spreadsheet Bridge (v0.66.0 — Adoption Roadmap Goal 7)<a class="headerlink" href="#spreadsheet-bridge-v0660-adoption-roadmap-goal-7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sysmlpy<span class="w"> </span>view<span class="w"> </span>model.sysml<span class="w"> </span>--view<span class="w"> </span>tabular<span class="w"> </span>--format<span class="w"> </span>csv<span class="w">        </span><span class="c1"># CSV export</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sysmlpy<span class="w"> </span>xlsx<span class="w"> </span>model.sysml<span class="w"> </span>-o<span class="w"> </span>model.xlsx<span class="w">                      </span><span class="c1"># Excel workbook (needs 'sysmlpy[xlsx]')</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sysmlpy<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>model.sysml<span class="w"> </span>--constraints<span class="w"> </span>--set-file<span class="w"> </span>values.csv<span class="w">  </span><span class="c1"># what-if from a sheet</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sysmlpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">loads</span><span class="p">,</span> <span class="n">check_constraints</span><span class="p">,</span> <span class="n">import_values_csv</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">sysml_text</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">bindings</span> <span class="o">=</span> <span class="n">import_values_csv</span><span class="p">(</span><span class="s2">"values.csv"</span><span class="p">)</span>   <span class="c1"># Name,Value[,Unit] rows</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">report</span> <span class="o">=</span> <span class="n">check_constraints</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">bindings</span><span class="o">=</span><span class="n">bindings</span><span class="p">)</span>  <span class="c1"># sheet-driven gate</span>
+</code></pre></div>
+<p>Import headers: <code>Name,Value[,Unit]</code> or <code>Element,Attribute,Value[,Unit]</code>;
+values parse as bool/int/float/pint-unit/string.</p>
+<h3 id="language-server-protocol-v0650-adoption-roadmap-goal-5">Language Server Protocol (v0.65.0 — Adoption Roadmap Goal 5)<a class="headerlink" href="#language-server-protocol-v0650-adoption-roadmap-goal-5" title="Permanent link">&para;</a></h3>
+<p>Editor integration: diagnostics, outline, hover, go-to-definition and
+completion for SysML v2 files in VS Code / Neovim / any LSP client.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sysmlpy-lsp<span class="w"> </span>--version<span class="w">              </span><span class="c1"># console script installed with sysmlpy</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>python<span class="w"> </span>-m<span class="w"> </span>sysmlpy.lsp<span class="w"> </span>--log<span class="w"> </span>/tmp/lsp.log<span class="w">   </span><span class="c1"># protocol trace</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/lsp_test.py<span class="w"> </span>-q<span class="w">     </span><span class="c1"># 37 protocol/feature tests</span>
+</code></pre></div>
+<ul>
+<li>VS Code: ready-to-package extension at
+  <code>editors/vscode/sysmlpy-lsp/</code> (see its README for npm/vsce steps).</li>
+<li>Neovim 0.11+: <code>vim.lsp.config("sysmlpy", { cmd = { "sysmlpy-lsp" },
+  filetypes = { "sysml" } })</code> + <code>vim.lsp.enable("sysmlpy")</code>.</li>
+<li>Details &amp; capability table: <a href="../LSP/"><code>docs/LSP.md</code></a>.</li>
+</ul>
+<h3 id="expression-evaluation-v0640-adoption-roadmap-goal-4">Expression Evaluation (v0.64.0 — Adoption Roadmap Goal 4)<a class="headerlink" href="#expression-evaluation-v0640-adoption-roadmap-goal-4" title="Permanent link">&para;</a></h3>
+<p>Attribute values (pint <code>Quantity</code>-aware) bind into expression
+evaluation — the bridge from "is this well-formed" to trade studies:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sysmlpy<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>model.sysml<span class="w">                                     </span><span class="c1"># dump all attribute values</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sysmlpy<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>model.sysml<span class="w"> </span>--expr<span class="w"> </span><span class="s2">"mass * speed"</span><span class="w"> </span>--element<span class="w"> </span>P::Vehicle
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sysmlpy<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>model.sysml<span class="w"> </span>--expr<span class="w"> </span><span class="s2">"mass * speed"</span><span class="w"> </span>--element<span class="w"> </span>P::Vehicle<span class="w"> </span>--set<span class="w"> </span><span class="nv">speed</span><span class="o">=</span><span class="m">80</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sysmlpy<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>model.sysml<span class="w"> </span>--constraints<span class="w">                       </span><span class="c1"># PASS/FAIL report; exit 1 on failure</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sysmlpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">loads</span><span class="p">,</span> <span class="n">evaluate_expression</span><span class="p">,</span> <span class="n">check_constraints</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="s2">"package P { part def V { attribute m : Real := 1200; "</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>              <span class="s2">"constraint c { m &gt; 1000 } } }"</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">evaluate_expression</span><span class="p">(</span><span class="s2">"m / 4"</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">bindings</span><span class="o">=</span><span class="p">{</span><span class="s2">"m"</span><span class="p">:</span> <span class="mi">1200</span><span class="p">})</span>  <span class="c1"># 300.0</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">report</span> <span class="o">=</span> <span class="n">check_constraints</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">to_text</span><span class="p">())</span>   <span class="c1"># [PASS] P::V::c: m &gt; 1000</span>
+</code></pre></div>
+<p>Supported: literals, <code>[unit]</code> values, <code>+ - * / % **</code>, comparisons,
+<code>and or not</code>, functions (<code>sqrt abs min max floor ceil round pow</code>),
+feature chains (<code>wheels.mass</code>). Values are lazily evaluated with
+cycle detection; unknown names raise <code>UnknownNameError</code>.</p>
+<h3 id="json-interchange-v0630-adoption-roadmap-goal-3">JSON Interchange (v0.63.0 — Adoption Roadmap Goal 3)<a class="headerlink" href="#json-interchange-v0630-adoption-roadmap-goal-3" title="Permanent link">&para;</a></h3>
+<p>Models exchange as JSON-LD-style partition documents in the style of the
+SysML v2 spec's JSON interchange: a flat <code>@graph</code> of elements, each with
+a deterministic <code>@id</code> (uuid5 from tree position) and <code>@type</code> (the
+abstract-syntax metaclass name), scalar properties inline, structural
+properties as <code>{"@id": ...}</code> references:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sysmlpy<span class="w"> </span><span class="nb">export</span><span class="w"> </span>model.sysml<span class="w"> </span>-o<span class="w"> </span>model.json<span class="w">      </span><span class="c1"># SysML text → interchange JSON</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sysmlpy<span class="w"> </span>import<span class="w"> </span>model.json<span class="w"> </span>-o<span class="w"> </span>roundtrip.sysml<span class="w">  </span><span class="c1"># interchange JSON → SysML text</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sysmlpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">loads</span><span class="p">,</span> <span class="n">to_interchange</span><span class="p">,</span> <span class="n">from_interchange</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="s2">"package P { part def V; }"</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">doc</span> <span class="o">=</span> <span class="n">to_interchange</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>          <span class="c1"># dict; json.dumps for wire format</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">same</span> <span class="o">=</span> <span class="n">from_interchange</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>         <span class="c1"># live Model, losslessly rebuilt</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">assert</span> <span class="n">same</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</code></pre></div>
+<p>Export is lossless: the rebuilt model's <code>dump()</code> text, grammar-object
+tree, and traceability report are identical to the original, and
+re-exporting a rebuilt model reproduces byte-identical JSON.</p>
+<h4 id="element-identity-parse-uuid4-vs-interchange-uuid5">Element identity: parse uuid4 vs interchange uuid5<a class="headerlink" href="#element-identity-parse-uuid4-vs-interchange-uuid5" title="Permanent link">&para;</a></h4>
+<p>Element identity behaves differently per layer — knowing which is which
+matters whenever something downstream must reference an element across
+parses or tools:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Identifier</th>
+<th>Stable across parses?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parse (<code>loads()</code>)</td>
+<td>Model root and <em>anonymous</em> elements get a fresh <strong>uuid4</strong> as their <code>name</code>; named elements carry no generated identifier</td>
+<td>❌ new uuid4 every parse</td>
+</tr>
+<tr>
+<td>Interchange (<code>to_interchange</code>)</td>
+<td>every element gets <code>@id</code>: deterministic <strong>uuid5</strong> from tree position under a fixed namespace</td>
+<td>✅ byte-identical JSON on every export</td>
+</tr>
+<tr>
+<td>Round trip (<code>from_interchange</code>)</td>
+<td>rebuild via the <code>@graph</code>; re-export reproduces the identical <code>@graph</code></td>
+<td>✅ identity preserved</td>
+</tr>
+</tbody>
+</table>
+<p>Notes for downstream tooling:</p>
+<ul>
+<li>No parsed element has a <code>.uuid</code> attribute — the only uuid4 names are
+  the Model root and anonymous declarations (<code>part : Engine;</code>).
+  Normalize both in round-trip comparisons.</li>
+<li>The interchange <code>@id</code> is <strong>position-derived</strong>, not content-derived:
+  the same element inside a different parent (or reordered package)
+  hashes differently.  For a given source text the ids are stable, which
+  is what diff-friendly interchange needs; for cross-document matching,
+  match on declared names / resolved qualified names.
+  <strong><code>stable_ids=True</code> / <code>doc_ids=True</code></strong> (v0.96.3/v0.96.4) switch the
+  exporter to
+  content-addressed / explicit ids respectively; see
+  <a href="../stable-identities/">Stable Element Identities</a> for the guarantees
+  and limitations.</li>
+<li>Full walkthrough: <code>examples/element_identity.py</code> — parses twice,
+  shows the fresh uuid4 vs the stable <code>@id</code>s, and proves the round trip
+  preserves identity.  <strong><code>reconcile_ids</code></strong> (registry sidecar, new):
+  re-exports adopt ids from the previous export file — name-matched
+  elements keep ids even when ancestor renames re-mint derived ids
+  (L3 identity).  <code>to_interchange(reconcile_with="model.json")</code>,
+  <code>reconcile_ids(doc, registry)</code>, CLI <code>sysmlpy export
+  --reconcile-with model.json -o model.json</code> (idempotent fixed point).
+  See <a href="../stable-identities/">Stable Element Identities</a>.</li>
+</ul>
+<h3 id="requirement-traceability-v0620-adoption-roadmap-goal-2">Requirement Traceability (v0.62.0 — Adoption Roadmap Goal 2)<a class="headerlink" href="#requirement-traceability-v0620-adoption-roadmap-goal-2" title="Permanent link">&para;</a></h3>
+<p>The satisfy / verify / verification relationships parse, round-trip, and
+feed a traceability reporting module:</p>
+<ul>
+<li><code>extract_traceability(model)</code> → <code>TraceabilityReport</code> with per-
+  requirement traces (qualified name, doc text, subject, <code>satisfied_by</code>,
+  <code>verified_by</code>, status <code>covered</code> / <code>partial</code> / <code>uncovered</code>) and coverage
+  queries (<code>coverage()</code>, <code>uncovered()</code>, <code>unsatisfied()</code>, <code>unverified()</code>).</li>
+<li>Output as text, Markdown, JSON (<code>to_text()</code> / <code>to_markdown()</code> /
+  <code>to_json()</code>) or a matrix view (<code>as_traceability_matrix_view</code>, formats:
+  markdown / html / plantuml).</li>
+<li>Requirement constructs: <code>subject : T;</code> / <code>subject v : T;</code> extraction,
+  <code>verify</code> members (reference and inline-declaration forms),
+  <code>verification def</code> definitions and package-level <code>verification</code>
+  usages — all with stable round-trip.</li>
+</ul>
+<h3 id="plantuml-view-renderings-v0252-v0270">PlantUML View Renderings (v0.25.2 → v0.27.0)<a class="headerlink" href="#plantuml-view-renderings-v0252-v0270" title="Permanent link">&para;</a></h3>
+<p>Eight view rendering functions across two releases:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>SysML v2 View</th>
+<th>Output</th>
+<th>Release</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>as_graphical_rendering()</code></td>
+<td><code>GraphicalRendering</code></td>
+<td>PlantUML</td>
+<td>v0.25.2</td>
+</tr>
+<tr>
+<td><code>as_interconnection_diagram()</code> / <code>as_interconnection_view()</code></td>
+<td><code>InterconnectionView</code> (<code>iv</code>)</td>
+<td>PlantUML</td>
+<td>v0.25.2 / v0.26.0</td>
+</tr>
+<tr>
+<td><code>as_action_flow_view()</code></td>
+<td><code>ActionFlowView</code> (<code>afv</code>)</td>
+<td>PlantUML</td>
+<td>v0.26.0</td>
+</tr>
+<tr>
+<td><code>as_state_transition_view()</code></td>
+<td><code>StateTransitionView</code> (<code>stv</code>)</td>
+<td>PlantUML</td>
+<td>v0.26.0</td>
+</tr>
+<tr>
+<td><code>as_tree_diagram()</code></td>
+<td>Tree/structure</td>
+<td>PlantUML</td>
+<td>v0.25.2</td>
+</tr>
+<tr>
+<td><code>as_element_table()</code></td>
+<td><code>TabularRendering</code></td>
+<td>PlantUML</td>
+<td>v0.25.2</td>
+</tr>
+<tr>
+<td><code>as_textual_notation()</code></td>
+<td><code>TextualRendering</code></td>
+<td>PlantUML</td>
+<td>v0.25.2</td>
+</tr>
+<tr>
+<td><code>as_general_view()</code></td>
+<td><code>GeneralView</code> (<code>gv</code>)</td>
+<td>PlantUML</td>
+<td>v0.27.0</td>
+</tr>
+<tr>
+<td><code>as_package_view()</code></td>
+<td>Package View</td>
+<td>PlantUML</td>
+<td>v0.27.0</td>
+</tr>
+<tr>
+<td><code>as_tabular_view()</code></td>
+<td><code>TabularView</code> (GridView)</td>
+<td>PlantUML / MD / HTML</td>
+<td>v0.27.0</td>
+</tr>
+<tr>
+<td><code>as_data_value_tabular_view()</code></td>
+<td>Data Value Tabular View</td>
+<td>PlantUML / MD / HTML</td>
+<td>v0.27.0</td>
+</tr>
+<tr>
+<td><code>as_relationship_matrix_view()</code></td>
+<td>Relationship Matrix View</td>
+<td>PlantUML / MD / HTML</td>
+<td>v0.27.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>v0.27.0 additions:</strong>
+- <strong>General View</strong> — all SysML v2 element types; full filtering by focus/elements/depth
+- <strong>Package View</strong> — package hierarchy with contained elements and import arrows
+- <strong>Tabular View</strong> — GridView specialization with configurable columns; PlantUML/Markdown/HTML output
+- <strong>Data Value Tabular View</strong> — attribute values + units; PlantUML/Markdown/HTML output
+- <strong>Relationship Matrix View</strong> — cross-element relationship matrix; PlantUML/Markdown/HTML output
+- 108 PlantUML tests total (up from 101 in v0.26.0)</p>
+<p><strong>v0.26.0 features:</strong>
+- <strong>Action Flow View</strong> — actions + flow connections; auto-discovers flow arrows from grammar bodies
+- <strong>Interconnection View</strong> — parts, ports, connections; <code>auto_include_connections</code> discovers bindings
+- <strong>State Transition View</strong> — states + transitions; <code>auto_include_transitions</code> expands selection
+- All views support: <code>focus</code>, <code>elements</code>, <code>show_external</code>, <code>auto_include_*</code>, <code>custom_style</code>, <code>direction</code>, B&amp;W/color toggle, and legend</p>
+<h3 id="stylistic-checks-v0255">Stylistic Checks (v0.25.5)<a class="headerlink" href="#stylistic-checks-v0255" title="Permanent link">&para;</a></h3>
+<p>The <code>analyze()</code> function now includes stylistic checks that warn about naming convention violations and file-package mismatches:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naming conventions</td>
+<td><code>NAMING_CONVENTION</code></td>
+<td>warning</td>
+<td>Definitions should be PascalCase, usages camelCase, packages PascalCase, attributes/ports camelCase</td>
+</tr>
+<tr>
+<td>File-package match</td>
+<td><code>FILE_PACKAGE_MISMATCH</code></td>
+<td>warning</td>
+<td>Top-level package name should match filename (minus extension)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>New <code>analyze()</code> parameters: <code>filename</code> (for file-package matching), <code>style_checks</code> (enable/disable, default <code>True</code>)</li>
+<li>All stylistic issues have severity <code>"warning"</code> rather than <code>"error"</code></li>
+<li>17 new tests in <code>tests/semantic_test.py</code></li>
+</ul>
+<h4 id="implemented-ocl-well-formness-checks">Implemented OCL Well-Formness Checks<a class="headerlink" href="#implemented-ocl-well-formness-checks" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Rule</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNDEFINED_SYMBOL</code></td>
+<td>—</td>
+<td>Reference to non-existent type or feature</td>
+</tr>
+<tr>
+<td><code>DUPLICATE_NAME</code></td>
+<td>Namespace.duplicate_names</td>
+<td>Two members with same name in a scope</td>
+</tr>
+<tr>
+<td><code>CYCLIC_SPECIALIZATION</code></td>
+<td>Type.no_cyclic_specialization</td>
+<td>Type specializing itself (directly or indirectly)</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_SUBSETTING</code></td>
+<td>Feature.subsetting_compatible</td>
+<td>Subsetting ref to undefined feature</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_REDEFINITION</code></td>
+<td>Feature.redefinition_compatible</td>
+<td>Redefinition ref to undefined feature</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_PART_DEFINITION</code></td>
+<td>Part.definition_compatible</td>
+<td>Part typed by non-PartDefinition</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_PORT_DEFINITION</code></td>
+<td>Port.definition_compatible</td>
+<td>Port typed by non-PortDefinition</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_FEATURE_CHAIN</code></td>
+<td>Feature.chaining_compatible</td>
+<td>Chained features (<code>a.b.c</code>) with incompatible types</td>
+</tr>
+<tr>
+<td><code>INVALID_MULTIPLICITY_BOUNDS</code></td>
+<td>Multiplicity.bounds_valid</td>
+<td>Lower bound &gt; upper bound (e.g., <code>[5..2]</code>)</td>
+</tr>
+<tr>
+<td><code>UNRESOLVED_IMPORT</code></td>
+<td>—</td>
+<td>Import target does not exist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="semantic-model-diff-v0740-goal-8-batch-1">Semantic Model Diff (v0.74.0 — Goal 8 batch 1)<a class="headerlink" href="#semantic-model-diff-v0740-goal-8-batch-1" title="Permanent link">&para;</a></h3>
+<p><code>sysmlpy.diff</code> compares two models semantically: <code>diff_models(old, new)</code>
+/ <code>diff_files(a, b)</code> produce added/removed/changed element reports keyed
+by <code>(kind, qualified name)</code> — repurposing a name across roles surfaces
+as removed+added, not a silent change. Signatures compare typing,
+requirement subject, and doc. Renders text (<code>+/-/~</code>), Markdown, JSON;
+backs the <code>sysmlpy diff</code> CLI. 16 tests (<code>tests/diff_test.py</code>).</p>
+<h3 id="goal-910-validator-hardening-v0690-v0770">Goal 9/10 Validator Hardening (v0.69.0 → v0.77.0)<a class="headerlink" href="#goal-910-validator-hardening-v0690-v0770" title="Permanent link">&para;</a></h3>
+<ul>
+<li>29 new rule codes across six batches (state machines, triggers,
+  coverage, traceability, satisfies, connectors, subject types) plus
+  <code>UNIT_DIMENSION_DERIVATION_MISMATCH</code> (<code>*</code>/<code>/</code> dimension algebra,
+  v0.75.0) — <strong>31 rule codes total</strong></li>
+<li>Connector-end type compatibility (<code>CONNECTOR_END_TYPE_MISMATCH</code>,
+  v0.76.0): unrelated local <code>port def</code> typings on a connection flagged</li>
+<li>Lexer-based import extraction for dependency scanning (v0.76.0):
+  bare imports, no comment/string false positives</li>
+<li>CayleyStore hardening + query parity (v0.77.0): true delete/clear,
+  marker-free <code>get()</code>, glob query parity with NetworkX,
+  label-namespaced subjects, verified against a live server</li>
+</ul>
+<h3 id="storage-backends">Storage Backends<a class="headerlink" href="#storage-backends" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>InMemoryStore</strong> — dict-based, zero dependencies</li>
+<li><strong>NetworkXStore</strong> — graph analysis (shortest paths, centrality, cycles)</li>
+<li><strong>KuzuStore</strong> — embedded graph DB with disk persistence and Cypher queries</li>
+<li><strong>CayleyStore</strong> — remote graph DB via HTTP API</li>
+</ul>
+<h3 id="test-coverage">Test Coverage<a class="headerlink" href="#test-coverage" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Suite</th>
+<th>Count</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grammar round-trip</td>
+<td>143</td>
+<td>✅ 143 pass (100%)</td>
+</tr>
+<tr>
+<td>Semantic analysis</td>
+<td>170</td>
+<td>✅ 170 pass</td>
+</tr>
+<tr>
+<td>PlantUML rendering</td>
+<td>122</td>
+<td>✅ 122 pass</td>
+</tr>
+<tr>
+<td>Storage backends</td>
+<td>97</td>
+<td>✅ pass (optional deps skipped if missing)</td>
+</tr>
+<tr>
+<td>Programmatic API</td>
+<td>75</td>
+<td>✅ 75 pass</td>
+</tr>
+<tr>
+<td>Traceability</td>
+<td>46</td>
+<td>✅ 46 pass</td>
+</tr>
+<tr>
+<td>JSON interchange</td>
+<td>38</td>
+<td>✅ 38 pass</td>
+</tr>
+<tr>
+<td>Expression evaluator</td>
+<td>44</td>
+<td>✅ 44 pass</td>
+</tr>
+<tr>
+<td>LSP server</td>
+<td>37</td>
+<td>✅ 37 pass</td>
+</tr>
+<tr>
+<td>Spreadsheet bridge</td>
+<td>37</td>
+<td>✅ 35 pass, 2 skip</td>
+</tr>
+<tr>
+<td>Model navigation</td>
+<td>42</td>
+<td>✅ 42 pass</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td>39</td>
+<td>✅ 39 pass</td>
+</tr>
+<tr>
+<td>Validator</td>
+<td>34</td>
+<td>✅ 34 pass</td>
+</tr>
+<tr>
+<td>Import resolution</td>
+<td>31</td>
+<td>✅ 31 pass</td>
+</tr>
+<tr>
+<td>Multi-file loading</td>
+<td>17</td>
+<td>✅ 17 pass</td>
+</tr>
+<tr>
+<td>Conformance</td>
+<td>123</td>
+<td>✅ 123 pass</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1205</strong></td>
+<td><strong>1082 fast + 123 conformance pass (25 skipped: optional deps)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-design-decisions">Key Design Decisions<a class="headerlink" href="#key-design-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="1-antlr4-over-textx">1. ANTLR4 over textX<a class="headerlink" href="#1-antlr4-over-textx" title="Permanent link">&para;</a></h3>
+<p>The project originally used textX but migrated to ANTLR4 for better conformance with the OMG SysML v2 grammar. The textX runtime and all related files have been removed.</p>
+<h3 id="2-grammar-class-hierarchy">2. Grammar Class Hierarchy<a class="headerlink" href="#2-grammar-class-hierarchy" title="Permanent link">&para;</a></h3>
+<p>The <code>grammar/classes.py</code> file contains ~354 classes that mirror the SysML v2 metamodel. Each class has:
+- <code>__init__()</code> — constructs from a dict (produced by the visitor)
+- <code>dump()</code> — serializes back to SysML v2 text
+- <code>get_definition()</code> — serializes back to dict (for round-trip)
+- <code>children</code> property — returns child elements for tree traversal</p>
+<h3 id="3-two-level-model">3. Two-Level Model<a class="headerlink" href="#3-two-level-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Grammar objects</strong> (<code>grammar/classes.py</code>) — low-level representation of the parse tree</li>
+<li><strong>Public classes</strong> (<code>usage.py</code>, <code>definition.py</code>) — user-friendly API with methods like <code>set_value()</code>, <code>_set_child()</code>, <code>find()</code></li>
+</ul>
+<p>The <code>load_from_grammar()</code> method on each public class bridges the two levels.</p>
+<h3 id="4-semantic-analysis-is-opt-in">4. Semantic Analysis is Opt-In<a class="headerlink" href="#4-semantic-analysis-is-opt-in" title="Permanent link">&para;</a></h3>
+<p>The semantic analyzer (<code>analyze(model)</code>) is non-invasive and opt-in. It does not modify the model or affect parsing/loading. This was a deliberate design choice to maintain backward compatibility.</p>
+<h3 id="5-import-visibility-is-required">5. Import Visibility is Required<a class="headerlink" href="#5-import-visibility-is-required" title="Permanent link">&para;</a></h3>
+<p>Per the SysML v2 spec (section 7.5.3), imports must have an explicit visibility keyword (<code>private</code>, <code>public</code>, or <code>protected</code>). The grammar enforces this — omitting the keyword produces a syntax error. The previous version allowed omission and defaulted to <code>private</code>.</p>
+<h3 id="6-multiplicity-is-stored-in-featurespecializationpart">6. Multiplicity is Stored in FeatureSpecializationPart<a class="headerlink" href="#6-multiplicity-is-stored-in-featurespecializationpart" title="Permanent link">&para;</a></h3>
+<p>Multiplicity ranges (<code>[N]</code>, <code>[N..M]</code>, <code>[*]</code>) are stored as part of the <code>FeatureSpecializationPart</code> alongside typings, subsettings, and redefinitions. This is a quirk of the SysML v2 grammar where multiplicity is parsed as part of the feature specialization.</p>
+<hr />
+<h2 id="known-issues-and-technical-debt">Known Issues and Technical Debt<a class="headerlink" href="#known-issues-and-technical-debt" title="Permanent link">&para;</a></h2>
+<h3 id="resolved">Resolved<a class="headerlink" href="#resolved" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Import visibility optional in grammar</strong></td>
+<td>Made <code>visibilityIndicator</code> required in <code>SysMLv2Parser.g4</code> (v0.21.0)</td>
+</tr>
+<tr>
+<td><strong>No multi-file loading support</strong></td>
+<td>Added <code>load_files()</code>, <code>load_project()</code>, <code>load_with_dependencies()</code> (v0.21.0)</td>
+</tr>
+<tr>
+<td><strong>Standard library imports not validated</strong></td>
+<td>Semantic analyzer now checks <code>LibrarySymbolIndex</code> for import targets (v0.21.0)</td>
+</tr>
+<tr>
+<td><strong>AliasMember / Import serialization order</strong></td>
+<td>v0.58.0 — <code>_ensure_body()</code> (Model + Package) now re-emits imports/aliases at their original source positions instead of appending them to the end.</td>
+</tr>
+<tr>
+<td><strong>Typed-by not preserved in load_from_grammar</strong></td>
+<td>v0.57.0 — <code>_extract_specialization_info()</code> hoisted to base <code>Usage</code> (both grammar layouts); new <code>Usage.typed_by_name</code> property populated for all usage kinds. v0.87.0 — post-pass covers the manually-wired dispatch kinds; visitor emits <code>specialization</code> for view/viewpoint/concern/allocation/rendering/connection/individual.</td>
+</tr>
+<tr>
+<td><strong>View <code>filter</code> / <code>expose</code> members silently dropped</strong></td>
+<td>v0.87.0 — visitor emits <code>ElementFilterMember</code> / <code>Expose</code> dicts; grammar classes implemented (<code>view v { filter @e1; expose e1; }</code> round-trips).</td>
+</tr>
+<tr>
+<td><strong>Guarded entry transitions crash on load</strong></td>
+<td>v0.87.0 — <code>_visit_guarded_target_succession</code> rewritten (<code>entry a1; if x &gt; 0 then s2;</code> round-trips).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-priority">High Priority<a class="headerlink" href="#high-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Location</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Typing resolved to name only</strong></td>
+<td><code>usage.py</code></td>
+<td>v0.57.0 preserves the declared type <em>name</em> (<code>typed_by_name</code>) on usages loaded from grammar; v0.87.0 extended name capture to every dispatch kind (view/viewpoint/concern/allocation/rendering/connection/individual/metadata/satisfy/…) and made the visitor emit <code>specialization</code> so <code>view v : Engine</code> round-trips; resolving <code>typedby</code> to the definition <em>object</em> via a model pass is still open.</td>
+</tr>
+<tr>
+<td><strong>Nested behavior-usage typings</strong></td>
+<td><code>antlr_visitor.py</code></td>
+<td>Nested dispatch emitters (<code>_visit_nested_occurrence_usage</code>, <code>_visit_nested_usage</code>) hardcode <code>specialization: None</code> — top-level kinds and the grammar-class dump chain are fixed (v0.87.0).</td>
+</tr>
+<tr>
+<td><strong>Usage-body imports dropped</strong></td>
+<td><code>antlr_visitor.py</code> / <code>grammar/classes.py</code></td>
+<td><code>part p1 : E { private import Q::*; }</code> — the visitor never dispatches <code>importRule</code> in <code>_visit_definition_body_item_dict</code>; <code>DefinitionBodyItem</code> has no Import branch.</td>
+</tr>
+<tr>
+<td><strong><code>satisfy</code> valuepart dropped on dump</strong></td>
+<td><code>antlr_visitor.py</code> ~:2521 / <code>grammar/classes.py</code></td>
+<td><code>satisfy R = 3;</code> loads but the value part is ignored by the grammar class on dump.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="medium-priority">Medium Priority<a class="headerlink" href="#medium-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Location</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~~<strong>Feature chain type resolution incomplete</strong>~~</td>
+<td><strong>Resolved v0.60.0</strong> — <code>ReferenceCollector</code> reference-kind tagging (typing refs are no longer chain-checked; fixes false <code>INCOMPATIBLE_FEATURE_CHAIN</code> on qualified type names) + full dotted-chain resolution through declared types with <code>:&gt;</code> inheritance, and visibility of enclosing-usage type members for <code>::</code>/<code>.</code>/single-member references (<code>_resolve_through_context</code>).</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Connector end compatibility is a stub</strong></td>
+<td><code>semantic.py</code> <code>_check_connector_ends_compatible()</code></td>
+<td>Returns empty list — full implementation requires resolving types of both connector ends and checking assignability.</td>
+</tr>
+<tr>
+<td><strong>Library symbol extraction is regex-based</strong></td>
+<td><code>semantic.py</code> <code>LibrarySymbolIndex</code></td>
+<td>Uses regex patterns to extract symbols from <code>.kerml</code>/<code>.sysml</code> files rather than parsing them. May miss edge cases or produce false positives.</td>
+</tr>
+<tr>
+<td><strong><code>_find_definition_by_name</code> walks entire model</strong></td>
+<td><code>semantic.py</code></td>
+<td>O(n) search through the entire model tree. Could be optimized with an index.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="low-priority">Low Priority<a class="headerlink" href="#low-priority" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Location</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No OCL constraint on succession source/target</strong></td>
+<td><code>semantic.py</code></td>
+<td>SuccessionAsUsage source and target should be actions — not validated.</td>
+</tr>
+<tr>
+<td><strong>No OCL constraint on requirement subject</strong></td>
+<td><code>semantic.py</code></td>
+<td>Requirements should have a subject parameter — not validated.</td>
+</tr>
+<tr>
+<td><strong>No OCL constraint on flow payload compatibility</strong></td>
+<td><code>semantic.py</code></td>
+<td>Flow payload must be compatible with source/target — not validated.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link">&para;</a></h2>
+<h3 id="semantic-analysis-extensions">Semantic Analysis Extensions<a class="headerlink" href="#semantic-analysis-extensions" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>~~<strong>Full type resolution for feature chains</strong>~~ — <strong>Resolved v0.60.0.</strong> Dotted expression chains (<code>a.b.c</code> where <code>a: A</code>, <code>A</code> has <code>b: B</code>, <code>B</code> has <code>c: C</code>) resolve through the declared type of each feature, following subsetting inheritance. Members of an enclosing usage's declared type are visible to chained references in usage bodies (<code>::</code>, <code>.</code>, and single-member forms), and inherited chain features advance to their declared type during compatibility checking.</p>
+</li>
+<li>
+<p><strong>Connector end type compatibility</strong> — Validate that connected ends have compatible types (e.g., a <code>Port</code> end can only connect to another <code>Port</code> end).</p>
+</li>
+<li>
+<p><strong>Succession source/target validation</strong> — Ensure succession source and target are actions.</p>
+</li>
+<li>
+<p><strong>Requirement subject validation</strong> — Ensure requirements have a subject parameter.</p>
+</li>
+<li>
+<p><strong>Flow payload compatibility</strong> — Ensure flow payload is compatible with source and target ends.</p>
+</li>
+<li>
+<p><strong>Multiplicity bounds on expressions</strong> — Currently only validates literal integer bounds. Variable references (e.g., <code>[i..j]</code>) and expressions are not validated.</p>
+</li>
+<li>
+<p><strong>Cardinality constraint propagation</strong> — When a feature is subsetted, the subsetting feature's multiplicity must be a subset of the subsetted feature's multiplicity.</p>
+</li>
+</ol>
+<h3 id="parser-and-grammar">Parser and Grammar<a class="headerlink" href="#parser-and-grammar" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>~~<strong>Fix top-level attribute multiplicity</strong>~~ — <strong>Resolved v0.59.0.</strong> Bounds were fixed in v0.40.0 (docs stale); the remaining <code>ordered</code>/<code>nonunique</code> flag bugs in the visitor extractors and <code>MultiplicityPart.dump()</code> were fixed in v0.59.0.</p>
+</li>
+<li>
+<p>~~<strong>Typed-by preservation</strong>~~ — <strong>Resolved v0.57.0</strong> (<code>Usage.typed_by_name</code>).</p>
+</li>
+<li>
+<p>~~<strong>AliasMember and Import handling</strong>~~ — <strong>Resolved v0.58.0</strong> (source-order preservation in <code>_ensure_body()</code>).</p>
+</li>
+</ol>
+<h3 id="library-and-standard-compliance">Library and Standard Compliance<a class="headerlink" href="#library-and-standard-compliance" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Parse library files instead of regex extraction</strong> — Replace <code>LibrarySymbolIndex._extract_from_file()</code> with actual parsing of <code>.kerml</code>/<code>.sysml</code> files for accurate symbol discovery.</p>
+</li>
+<li>
+<p><strong>Standard library loading</strong> — ~~Currently library symbols are indexed but not loaded as actual model objects.~~ Partially resolved in v0.21.0: <code>load_files()</code> and <code>load_with_dependencies()</code> accept a <code>library</code> parameter that validates standard library imports. Full resolution would parse library files and make them available for symbol resolution in <code>analyze()</code>.</p>
+</li>
+<li>
+<p><strong>OCL constraint library</strong> — Consider maintaining a machine-readable OCL constraint library that can be extended without code changes.</p>
+</li>
+</ol>
+<h3 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Symbol table indexing</strong> — Add an index for <code>_find_definition_by_name</code> to avoid O(n) model traversal.</p>
+</li>
+<li>
+<p><strong>Lazy semantic analysis</strong> — Currently all constraints are checked on every <code>analyze()</code> call. Consider lazy evaluation or incremental analysis.</p>
+</li>
+<li>
+<p><strong>Caching for library symbol index</strong> — Already implemented, but consider disk caching for faster startup.</p>
+</li>
+</ol>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>API documentation</strong> — Generate API docs from docstrings (Sphinx or MkDocs).</p>
+</li>
+<li>
+<p><strong>Semantic analysis guide</strong> — Dedicated documentation page for using <code>analyze()</code> and interpreting results.</p>
+</li>
+<li>
+<p><strong>Multi-file project guide</strong> — Document <code>load_files()</code>, <code>load_project()</code>, and <code>load_with_dependencies()</code> with examples for common project structures.</p>
+</li>
+</ol>
+<hr />
+<h2 id="potential-pitfalls">Potential Pitfalls<a class="headerlink" href="#potential-pitfalls" title="Permanent link">&para;</a></h2>
+<h3 id="1-grammar-class-children-property-is-fragile">1. Grammar Class <code>children</code> Property is Fragile<a class="headerlink" href="#1-grammar-class-children-property-is-fragile" title="Permanent link">&para;</a></h3>
+<p>The <code>children</code> property on grammar classes uses <code>getattr(self, "children", [])</code> which returns an empty list for classes that don't have a <code>children</code> attribute. This is convenient but can mask bugs where a class should have children but doesn't.</p>
+<p><strong>Mitigation:</strong> Always verify the class has a <code>children</code> attribute before relying on it. Use <code>hasattr()</code> if uncertain.</p>
+<h3 id="2-visitor-dict-structure-is-not-typed">2. Visitor Dict Structure is Not Typed<a class="headerlink" href="#2-visitor-dict-structure-is-not-typed" title="Permanent link">&para;</a></h3>
+<p>The internal dict produced by <code>antlr_visitor.py</code> is not typed or validated. Changes to the visitor can silently break grammar classes that expect specific keys.</p>
+<p><strong>Mitigation:</strong> Run the full test suite after any visitor changes. Consider adding a schema validator for the dict structure.</p>
+<h3 id="3-multiplicity-structure-is-deeply-nested">3. Multiplicity Structure is Deeply Nested<a class="headerlink" href="#3-multiplicity-structure-is-deeply-nested" title="Permanent link">&para;</a></h3>
+<p>The multiplicity structure is 5 levels deep: <code>FeatureSpecializationPart → MultiplicityPart → OwnedMultiplicity → MultiplicityRange → MultiplicityExpressionMember → MultiplicityRelatedElement → LiteralInteger</code>. This makes it easy to get the navigation wrong.</p>
+<p><strong>Mitigation:</strong> Use the <code>_extract_bound_value_from_member()</code> helper in <code>semantic.py</code> as a reference for correct navigation.</p>
+<h3 id="4-import-visibility-propagation-is-complex">4. Import Visibility Propagation is Complex<a class="headerlink" href="#4-import-visibility-propagation-is-complex" title="Permanent link">&para;</a></h3>
+<p>The <code>_propagate_public_imports()</code> method handles three visibility levels with different propagation rules. Adding new visibility levels or changing rules requires careful testing.</p>
+<p><strong>Mitigation:</strong> The <code>TestImportVisibility</code> test class covers the key scenarios. Add new tests when modifying visibility logic.</p>
+<h3 id="5-symbol-table-and-model-tree-are-separate">5. Symbol Table and Model Tree are Separate<a class="headerlink" href="#5-symbol-table-and-model-tree-are-separate" title="Permanent link">&para;</a></h3>
+<p>The <code>SymbolTable</code> is built from the model tree but is a separate data structure. Changes to the model after <code>analyze()</code> is called will not be reflected in the symbol table.</p>
+<p><strong>Mitigation:</strong> Document that <code>analyze()</code> should be called after all model modifications are complete.</p>
+<h3 id="8-multi-file-package-merging">8. Multi-File Package Merging<a class="headerlink" href="#8-multi-file-package-merging" title="Permanent link">&para;</a></h3>
+<p>When <code>load_files()</code> merges packages with the same name, children are appended without deduplication. If two files define the same element name within the same package, both will exist in the merged model and may trigger <code>DUPLICATE_NAME</code> warnings during analysis.</p>
+<p><strong>Mitigation:</strong> Use <code>analyze()</code> after loading to detect duplicate names. Ensure project files define non-overlapping elements within shared packages.</p>
+<h3 id="6-antlr-grammar-updates-require-visitor-updates">6. ANTLR Grammar Updates Require Visitor Updates<a class="headerlink" href="#6-antlr-grammar-updates-require-visitor-updates" title="Permanent link">&para;</a></h3>
+<p>When the OMG releases a new SysML v2 grammar, the ANTLR parser must be regenerated and the visitor updated to handle any new rules.</p>
+<p><strong>Mitigation:</strong> The conformance test suite (123 tests) serves as a regression test. Run it after any grammar update.</p>
+<h3 id="7-python-313-compatibility">7. Python 3.13 Compatibility<a class="headerlink" href="#7-python-313-compatibility" title="Permanent link">&para;</a></h3>
+<p>The project runs on Python 3.13.5. Some dependencies (like <code>antlr4-python3-runtime</code>) may have compatibility issues with newer Python versions.</p>
+<p><strong>Mitigation:</strong> Pin dependency versions in <code>pyproject.toml</code>. Test on multiple Python versions if expanding support.</p>
+<hr />
+<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
+<h3 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># All tests</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pytest<span class="w"> </span>tests/
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Specific suites</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>pytest<span class="w"> </span>tests/grammar_test.py<span class="w">        </span><span class="c1"># Round-trip</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>pytest<span class="w"> </span>tests/class_test.py<span class="w">          </span><span class="c1"># Programmatic API</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>pytest<span class="w"> </span>tests/semantic_test.py<span class="w">       </span><span class="c1"># Semantic analysis</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>pytest<span class="w"> </span>tests/project_test.py<span class="w">        </span><span class="c1"># Multi-file loading</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>pytest<span class="w"> </span>tests/store_test.py<span class="w">          </span><span class="c1"># Storage backends</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>pytest<span class="w"> </span>tests/conformance_test.py<span class="w">    </span><span class="c1"># OMG conformance (slow)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># Skip conformance (fast development)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">"not conformance"</span>
+</code></pre></div>
+<h3 id="adding-a-new-ocl-constraint">Adding a New OCL Constraint<a class="headerlink" href="#adding-a-new-ocl-constraint" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Add a check method to <code>SemanticAnalyzer</code> in <code>semantic.py</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_check_my_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">symtab</span><span class="p">:</span> <span class="n">SymbolTable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">SemanticIssue</span><span class="p">]:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">issues</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SemanticIssue</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="c1"># Walk model, check constraint, append issues</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="k">return</span> <span class="n">issues</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Call it from <code>analyze()</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">issues</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_check_my_constraint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">symtab</span><span class="p">))</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Add tests to <code>tests/semantic_test.py</code>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TestMyConstraint</span><span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">test_violation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="n">issues</span> <span class="o">=</span> <span class="n">analyze</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="s2">"MY_CONSTRAINT"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="adding-a-new-storage-backend">Adding a New Storage Backend<a class="headerlink" href="#adding-a-new-storage-backend" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Subclass <code>Store</code> in <code>store.py</code>:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyStore</span><span class="p">(</span><span class="n">Store</span><span class="p">):</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span> <span class="o">...</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="c1"># ... implement all abstract methods</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Register in <code>create_store()</code>:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">elif</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">"my"</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="k">return</span> <span class="n">MyStore</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Add tests to <code>tests/store_test.py</code> using the parameterized test patterns.</p>
+</li>
+</ol>
+<h3 id="adding-multi-file-loading-support">Adding Multi-File Loading Support<a class="headerlink" href="#adding-multi-file-loading-support" title="Permanent link">&para;</a></h3>
+<p>The <code>project.py</code> module handles multi-file loading:</p>
+<ol>
+<li><code>load_files()</code> parses each file and merges packages with the same name</li>
+<li><code>load_project()</code> discovers all <code>.sysml</code>/<code>.kerml</code> files in a directory</li>
+<li><code>load_with_dependencies()</code> extracts imports via regex and recursively loads dependencies</li>
+</ol>
+<p>To extend import resolution, modify <code>_extract_imports()</code> and <code>_find_import_file()</code> in <code>project.py</code>.</p>
+<hr />
+<h2 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Author:</strong> Jon R. Fox (mycr0ft) — jon.fox@drfox.com</li>
+<li><strong>Repository:</strong> https://github.com/mycr0ft/sysmlpy</li>
+<li><strong>Issues:</strong> https://github.com/mycr0ft/sysmlpy/issues</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

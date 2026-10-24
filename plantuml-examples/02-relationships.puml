@@ -1,0 +1,116 @@
+@startuml
+
+skinparam monochrome true
+skinparam wrapWidth 300
+skinparam defaultFontSize 12
+skinparam defaultFontName Helvetica
+
+' Definitions: sharp corners, plain background
+skinparam rectangle<<part def>> {
+    RoundCorner 0
+    BackgroundColor white
+    StereotypeFontSize 11
+}
+skinparam rectangle<<item def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<attribute def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<port def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<action def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<state def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<requirement def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<view def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<viewpoint def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+skinparam rectangle<<enumeration def>> {
+    RoundCorner 0
+    BackgroundColor white
+}
+
+' Usages: rounded corners, plain background
+skinparam rectangle<<part>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<item>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<attribute>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<port>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<action>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<state>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<requirement>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<view>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<viewpoint>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+skinparam rectangle<<enumeration>> {
+    RoundCorner 15
+    BackgroundColor white
+}
+
+' Views as folders
+skinparam folder<<view def>> {
+    BackgroundColor white
+}
+skinparam folder<<view>> {
+    BackgroundColor white
+}
+
+top to bottom direction
+
+title gv [model] c669e3dc-21ec-4ab4-8231-49d91323a3e0
+
+hide circle
+
+rectangle "Base" as E1 <<part def>>
+rectangle "Derived" as E2 <<part def>>
+rectangle "Container" as E3 <<part def>>
+rectangle "contained" as E4 <<part>>
+
+E2 --|> E1 : specializes
+E3 *-- E4
+E4 --:|> E1 : types
+
+@enduml

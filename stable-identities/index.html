@@ -1,0 +1,1059 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SysML v2.0 Parser for Python">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Stable Element Identities — Scoping for Idempotent Interchange - sysmlpy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stable-element-identities-scoping-for-idempotent-interchange" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sysmlpy" class="md-header__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sysmlpy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stable Element Identities — Scoping for Idempotent Interchange
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sysmlpy" class="md-nav__button md-logo" aria-label="sysmlpy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sysmlpy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mycr0ft/sysmlpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mycr0ft/sysmlpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TUTORIAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vee-link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vee Link (SysML-STEP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml How-to
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sysml-magics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jupyter %%sysml magic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LSP_EDITORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LSP in Neovim & VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../STATUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TODO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Problem statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-idempotency-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Idempotency levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-content-addressed-uuid5-recommended-for-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Content-addressed uuid5 (recommended for L2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-canonical-subtree-hashing-l2-robust-heavier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Canonical-subtree hashing (L2 robust, heavier)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-source-carried-explicit-ids-l3-spec-aligned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Source-carried explicit ids (L3, spec-aligned)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-do-nothing-for-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Do nothing for L3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-recommended-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Recommended scope
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Recommended scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-2b-l3-source-carried-explicit-ids-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2b (L3, source-carried explicit ids) — IMPLEMENTED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-decision-recorded-declared-path-not-resolved-qn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design decision recorded: declared-path, not resolved-QN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-risks-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Risks / open questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="stable-element-identities-scoping-for-idempotent-interchange">Stable Element Identities — Scoping for Idempotent Interchange<a class="headerlink" href="#stable-element-identities-scoping-for-idempotent-interchange" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Status:</strong> scope / not yet implemented
+<strong>For:</strong> projects that need the same SysML v2 model to produce the
+<em>same element identifiers</em> across parses, tools, and incremental
+edits — not just across round-trips.
+<strong>Companion demo:</strong> <code>examples/element_identity.py</code> (what exists today)</p>
+</blockquote>
+<hr />
+<h2 id="1-problem-statement">1. Problem statement<a class="headerlink" href="#1-problem-statement" title="Permanent link">&para;</a></h2>
+<p>sysmlpy's interchange layer already assigns every element a
+deterministic <code>@id</code> (uuid5 under a fixed namespace). That satisfies the
+"parse the same text twice, get identical JSON" level of idempotency.
+It does <strong>not</strong> survive edits that change structure before the element
+in question. Verified behaviour (probes, 2026-09-28):</p>
+<table>
+<thead>
+<tr>
+<th>Edit before <code>part def Engine</code></th>
+<th>Engine's <code>@id</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none (same text)</td>
+<td><code>sysml:d1959147…</code> — stable</td>
+</tr>
+<tr>
+<td>ancestor package renamed <code>P</code> → <code>Q</code></td>
+<td><strong>stable</strong> (wrapper nodes are unnamed; the hash chain runs through them)</td>
+</tr>
+<tr>
+<td>sibling declared <em>after</em> it</td>
+<td><strong>stable</strong> (its own index is unchanged)</td>
+</tr>
+<tr>
+<td>sibling declared <em>before</em> it</td>
+<td><strong>shifts</strong> — new uuid5</td>
+</tr>
+<tr>
+<td>element moved one nesting level deeper</td>
+<td><strong>shifts</strong> — new uuid5</td>
+</tr>
+</tbody>
+</table>
+<p>So the current id encodes <em>structural position</em> (depth + sibling
+index), not <em>what the element is</em>. Diff-friendly for unchanged text,
+fragile for evolving models — the exact case a persistent store
+(kuzu/networkx/cayley backend) or a cross-tool traceability pipeline
+cares about.</p>
+<h2 id="2-idempotency-levels">2. Idempotency levels<a class="headerlink" href="#2-idempotency-levels" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Guarantee</th>
+<th>Today</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L0</td>
+<td>dump → parse → dump is fixed-point</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>same text re-parsed → identical <code>@graph</code></td>
+<td>✅ (uuid5 position ids)</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>insertion/reordering elsewhere in the document keeps ids of untouched elements</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>same element across independently maintained documents (renamed parents, split packages) resolves to one identity</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>The store layer (<code>store.py</code>) is already keyed by element UUID and is
+the natural consumer of L2; multi-repo/ ReqIF traceability wants L3.</p>
+<h2 id="3-options">3. Options<a class="headerlink" href="#3-options" title="Permanent link">&para;</a></h2>
+<h3 id="a-content-addressed-uuid5-recommended-for-l2">A. Content-addressed uuid5 (recommended for L2)<a class="headerlink" href="#a-content-addressed-uuid5-recommended-for-l2" title="Permanent link">&para;</a></h3>
+<p>Replace <code>_child_id(parent_id, key, index)</code> with a hash over the
+element's <em>identity path</em>: resolved qualified name + <code>@type</code>
+(+ occurrence index among content-identical siblings as tie-breaker).</p>
+<ul>
+<li>Pros: pure-python change localized to <code>interchange.py</code>; ids stable
+  under insertion/reorder elsewhere; no source changes needed; the
+  namespace/<code>sysml:</code> prefix machinery stays.</li>
+<li>Cons (measured): name collisions are real — two sibling
+  <code>part def Engine</code> declarations hash to the same key. Tie-breaker
+  (occurrence index among same-key siblings) reintroduces position
+  sensitivity <em>only within the colliding group</em>, which is an acceptable
+  degradation: untouched elements outside the group keep their ids.</li>
+<li>Needs the resolver: qualified names require <code>semantic.py</code>'s
+  SymbolTable walk during export (already importable; export currently
+  stays resolver-free).</li>
+</ul>
+<h3 id="b-canonical-subtree-hashing-l2-robust-heavier">B. Canonical-subtree hashing (L2 robust, heavier)<a class="headerlink" href="#b-canonical-subtree-hashing-l2-robust-heavier" title="Permanent link">&para;</a></h3>
+<p>Hash a canonical serialization of the element's <em>subtree</em> (sorted keys,
+ids replaced by recursion). Collision-tolerant and rename-resistant
+within the subtree; survives re-parenting only if the parent name is
+part of the QN anyway. More implementation and spec work (canonical
+form must be pinned by tests, like JSON canonicalization); use only if
+A's tie-breaker behaviour is unacceptable.</p>
+<h3 id="c-source-carried-explicit-ids-l3-spec-aligned">C. Source-carried explicit ids (L3, spec-aligned)<a class="headerlink" href="#c-source-carried-explicit-ids-l3-spec-aligned" title="Permanent link">&para;</a></h3>
+<p>SysML v2's interchange <code>@id</code> is tool-assigned; the textual syntax has no
+standard id slot. For cross-document identity, carry ids explicitly:</p>
+<ul>
+<li>doc-comment convention: <code>doc /* @id: sysml:… */</code> (already parsed as
+  <code>.doc</code> on every element since v0.96.1);</li>
+<li>or a sidecar mapping file (text → id) maintained by the project.</li>
+</ul>
+<p>Exporter honors an explicit id when present, mints per option A
+otherwise. This is the only scheme that survives arbitrary re-factoring
+and is honest about identity being <em>assigned</em>, not derived. Cost: a
+convention the other project must adopt and preserve.</p>
+<h3 id="d-do-nothing-for-l3">D. Do nothing for L3<a class="headerlink" href="#d-do-nothing-for-l3" title="Permanent link">&para;</a></h3>
+<p>Match on resolved qualified names at query time (semantic.py already
+resolves across imports). No id stability needed if consumers can key
+on <code>P::Sub::Engine</code>. Often sufficient; cheapest.</p>
+<h2 id="4-recommended-scope">4. Recommended scope<a class="headerlink" href="#4-recommended-scope" title="Permanent link">&para;</a></h2>
+<p>Phase 1 (L2) — <strong>IMPLEMENTED (v0.96.3)</strong>:</p>
+<ol>
+<li>✅ <code>interchange.py</code>: <code>to_interchange(..., stable_ids=False)</code> — when
+   True, ids are uuid5 over the <strong>declared</strong> qualified-name path
+   (syntax-derived, no resolver: <code>P.Engine.power</code> style chains of
+   <code>Identification.declaredName</code> from root) + <code>@type</code>; anonymous /
+   unresolved elements hash the nearest named anchor plus the
+   structural path from it (option-A resolved-QN variant deliberately
+   deferred — declared path keeps export resolver-free and
+   machine-independent).</li>
+<li>✅ Anonymous elements keep anchor-relative keys — documented that
+   anonymous identity follows the nearest declared ancestor.</li>
+<li>✅ Tests (<code>tests/interchange_test.py::TestStableIds</code>): L1
+   byte-identity, the §1 edit matrix as parametrized cases
+   (sibling before/after, inner-feature insertion), ancestor-rename
+   and re-nesting identity-follows-content semantics, collision-group
+   uniqueness, graph-wide uniqueness on the rich model, round trip,
+   and default-path invariance (<code>stable_ids=False</code> byte-identical to
+   the v0.63.0 behaviour).</li>
+<li>✅ <code>store.py</code> upsert verified on the memory backend: same stable id
+   updates the stored element in place (stores are UUID-keyed by
+   design).  networkx/kuzu/cayley backends are optional-dependency
+   gated in this environment (their test failures are pre-existing,
+   unrelated to ids).</li>
+<li>✅ CLI: <code>sysmlpy export --stable-ids</code>.</li>
+</ol>
+<p>Phase 2 (L3) — <strong>IMPLEMENTED (v0.96.3, registry variant)</strong>:</p>
+<ul>
+<li><code>reconcile_ids(document, registry)</code> — adopt ids from a previous
+  export (dict, JSON text, or a filesystem <code>Path</code>/path str).
+  Injective matching: (declaredName, @type) must be unique on BOTH
+  sides, each registry id adopted at most once; ambiguous keys keep
+  derived ids.</li>
+<li><code>to_interchange(..., reconcile_with=...)</code> convenience — implies
+  <code>stable_ids=True</code>.</li>
+<li><strong>Nested-ref remap:</strong> adoption rewrites not just the element's
+  top-level <code>@id</code> but every nested <code>{"@id": &lt;derived&gt;}</code> reference
+  pointing at it (typed-by references, member chains) — without the
+  remap, documents whose <em>identity</em> was reconciled dangle on import
+  (found by <code>test_reconcile_result_round_trips</code> during this build).</li>
+<li>CLI: <code>sysmlpy export --reconcile-with model.json -o model.json</code> —
+  idempotent fixed point after the first export.</li>
+<li>Tests (10): rename+insert motivating case, JSON-text registry,
+  graph-wide uniqueness after reconcile (the spike's dupes pitfall),
+  no-adoption for renamed/ambiguous elements, three-round file
+  workflow, injectivity on same-name groups, error guards,
+  <code>reconcile_with=</code> convenience flag, reconciled round trip.</li>
+<li>Registry-file str/Path disambiguation: a str is treated as a path
+  only when it is &lt; 4097 chars, single-line, and exists — otherwise
+  it parses as JSON text (a JSON <em>body</em> pasted inline must not be
+  <code>open()</code>ed as a filename).</li>
+</ul>
+<p>Remaining gap to full L3: elements renamed so thoroughly that no
+declared name matches stay unmatched (fresh derived ids; they become
+registry entries on the next write).  The doc-comment <code>@id:</code>
+convention (option C below) removes even that.</p>
+<h3 id="phase-2b-l3-source-carried-explicit-ids-implemented">Phase 2b (L3, source-carried explicit ids) — IMPLEMENTED<a class="headerlink" href="#phase-2b-l3-source-carried-explicit-ids-implemented" title="Permanent link">&para;</a></h3>
+<p>(v0.96.4, released on main)</p>
+<ul>
+<li><strong>Carrier (verified safe-shape):</strong> a <code>doc /* @id: … */</code> comment
+  INSIDE the element's own braces attaches to that element (<code>.doc</code>
+  on the public tree); doc text survives <code>dump()</code> → re-parse
+  idempotently.  <strong>Pitfall pinned by tests:</strong> a doc statement at
+  <em>sibling</em> level (outside the element's braces) bubbles to the
+  enclosing package — placement decides the owner
+  (<code>test_explicit_id_attach_point_semantics</code>).</li>
+<li><strong>Harvest:</strong> <code>_harvest_doc_ids(model)</code> walks the public tree
+  (<code>.doc</code> populated on every kind), mapping declared QN path → the
+  <code>@id:</code> token in the comment; the Model root's per-parse uuid
+  name is skipped.  Returns <code>None</code> on plain models so
+  <code>doc_ids=True</code> stays inert (byte-identical to <code>stable_ids</code>
+  output — pinned by <code>test_plain_models_unaffected</code>).</li>
+<li><strong>Precedence:</strong> explicit &gt; registry &gt; derive; never re-minted over
+  an explicit id (<code>_StableIdAssigner(explicit_ids=...)</code>).</li>
+<li><strong>Qn-path bridge:</strong> the assigner receives repeat-tail paths
+  (<code>('P','P','P')</code> — one segment per declaration/identification
+  nesting level); <code>_dedupe_repeat_tail</code> collapses them so the
+  harvest key (<code>'P.Engine'</code>) matches.  Adoption gates on the node
+  being the Identification whose deduped path == the key (Package
+  and PackageDeclaration keep derived ids — probe2j).</li>
+<li><strong>Duplicate-id export error:</strong> two elements claiming the same
+  explicit id (same QN key twice, or different keys → same id
+  value) raise <code>ValueError</code> — enforced on the id VALUE
+  (probe2l).</li>
+<li><strong>Verified end to end:</strong> export → dump → re-parse → export keeps
+  the explicit id; full interchange round trip
+  (<code>from_interchange</code>) keeps it; graph-wide uniqueness; 12 new
+  tests (<code>tests/interchange_test.py::TestDocIds</code>).</li>
+<li>API: <code>to_interchange(..., doc_ids=True)</code> (implies
+  <code>stable_ids</code>).</li>
+</ul>
+<p>Deferred (see §5): import-side re-embedding of explicit ids into
+<code>dump()</code> text (<code>--embed-ids</code>) — dump shapes are pinned by the
+168 round-trip tests; the doc carrier survives dumps as-is for
+elements whose bodies start with their doc comment, so full
+re-embedding is a tightening, not a correctness gap.</p>
+<h3 id="design-decision-recorded-declared-path-not-resolved-qn">Design decision recorded: declared-path, not resolved-QN<a class="headerlink" href="#design-decision-recorded-declared-path-not-resolved-qn" title="Permanent link">&para;</a></h3>
+<p>Option A as scoped mentioned hashing the <em>resolved</em> qualified name via
+<code>semantic.py</code>.  Implementation uses the <strong>declared</strong> path instead
+(chain of <code>Identification.declaredName</code> from root): resolution depends
+on library availability and import resolution, which would make ids
+machine-dependent — defeating idempotency.  Consequence: ids follow
+declared identity, so renaming an ancestor re-mints descendant ids
+(verified in <code>test_qn_follows_declared_identity</code>).  The position scheme
+accidentally survived ancestor renames; the content scheme intentionally
+does not.  Trade-off documented here rather than hidden.</p>
+<h2 id="5-risks-open-questions">5. Risks / open questions<a class="headerlink" href="#5-risks-open-questions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Resolved-QN depends on import resolution settings; a model whose
+  imports resolve differently on another machine gets different ids.
+  Mitigation: hash the <em>declared</em> QN path (pure syntax) rather than the
+  resolved one, and document the difference.</li>
+<li>Changing the default id scheme breaks byte-comparisons against
+  previously exported JSON — hence the opt-in flag and a CHANGELOG
+  note; consider a <code>--stable-ids</code> CLI flag on <code>sysmlpy export</code>.</li>
+<li>Same-name sibling collision groups grow/shrink on edit; ids inside
+  the group shift by design (tie-breaker index). Acceptable if
+  documented; option C removes it entirely.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
